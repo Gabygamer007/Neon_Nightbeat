@@ -5,14 +5,14 @@
       "artiste": "Artiste Musique",
       "difficulte": "Normal",
       "audio_file": "titre_musique.mp3",
-      "temps": 3:28
+      "temps": 208
     },
     {
       "titre": "Autre Titre Musique",
       "artiste": "Autre Artiste Musique",
       "difficulte": "Facile",
       "audio_file": "autre_titre_musique.mp3",
-      "temps": 4:40
+      "temps": 246
     }
   ],
   "joueurs": [
