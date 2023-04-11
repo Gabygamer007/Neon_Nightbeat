@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ObjectNote : MonoBehaviour
 {
-
     public bool canBePressed;
 
     public KeyCode keyToPress;
     
     void Start()
     {
-        
+
     }
 
     
@@ -25,18 +24,27 @@ public class ObjectNote : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SetColor(Color color)
     {
-        if (other.tag == "Receptor")
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = color;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Receptor")
         {
             canBePressed = true;
         }
         
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if (other.tag == "Receptor")
+        if (collider.tag == "Receptor")
         {
             canBePressed = false;
         }

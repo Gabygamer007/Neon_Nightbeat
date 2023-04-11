@@ -3,7 +3,11 @@ guid: 7e3eb455b373ad1479d065037e58fcfa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - text: {instanceID: 0}
+  - prefabNote: {fileID: 3911679419761654007, guid: 01fbdde6b842f304f8eafd405e82ae46, type: 3}
+  - theMusic: {instanceID: 0}
+  - theBS: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
