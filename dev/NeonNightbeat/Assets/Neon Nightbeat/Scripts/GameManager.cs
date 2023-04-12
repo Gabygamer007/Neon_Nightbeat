@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,15 +19,40 @@ public class GameManager : MonoBehaviour
 
     private bool canStart = false;
 
-    public BeatScroller theBS;
+    public BeatScroller beatScroller;
 
     void Start()
     {
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
-        factory.CreateMusicNote(prefabNote, new Vector3(-3.0f, 22.0f), new Color(255f/255f, 17f/255f, 120f/255f), KeyCode.A);
-        factory.CreateMusicNote(prefabNote, new Vector3(3.0f, 22.0f), new Color(255f / 255f, 17f / 255f, 120f / 255f), KeyCode.F);
-        factory.CreateMusicNote(prefabNote, new Vector3(1.0f, 28.0f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.D);
+        using (var reader = new StreamReader(@"./Assets/Neon Nightbeat/Imagine_Dragons_Warriors.csv"))
+        {
+            string touche = "";
+            while (!reader.EndOfStream)
+            {
+                Vector3 position = new Vector3(0, 0, 1);
+                Color couleur = new Color();
+                var line = reader.ReadLine();
+                var values = line.Split(';');
+                position.x = (int.Parse(values[1]) * 2) - 5;
+                if (float.TryParse(values[2], out float result))
+                {
+                    position.y = result;
+                }
+                if (values[1] == "1" || values[1] == "4")
+                {
+                    var colorValues = PlayerPrefs.GetString("couleurExt").Split(';');
+                    couleur = new Color(float.Parse(colorValues[0]), float.Parse(colorValues[1]), float.Parse(colorValues[2]));
+                }
+                else if (values[1] == "2" || values[1] == "3")
+                {
+                    var colorValues = PlayerPrefs.GetString("couleurInt").Split(';');
+                    couleur = new Color(float.Parse(colorValues[0]), float.Parse(colorValues[1]), float.Parse(colorValues[2]));
+                }
+                touche = PlayerPrefs.GetString("touche" + values[1]);
+                factory.CreateMusicNote(prefabNote, position, couleur, (KeyCode)System.Enum.Parse(typeof(KeyCode), touche));
+            }
+        }
         text.text = "Press any key to start";
         canStart = true;
     }
@@ -40,7 +66,7 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 Destroy(GameObject.Find("TextStart"));
-                theBS.hasStarted = true;
+                beatScroller.hasStarted = true;
 
                 theMusic.Play();
             }
