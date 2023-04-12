@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
     {
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
-        factory.CreateMusicNote(prefabNote, new Vector3(-3.0f, 22.56f), new Color(255f/255f, 17f/255f, 120f/255f), KeyCode.A);
+        factory.CreateMusicNote(prefabNote, new Vector3(-3.0f, 22.0f), new Color(255f/255f, 17f/255f, 120f/255f), KeyCode.A);
+        factory.CreateMusicNote(prefabNote, new Vector3(3.0f, 22.0f), new Color(255f / 255f, 17f / 255f, 120f / 255f), KeyCode.F);
+        factory.CreateMusicNote(prefabNote, new Vector3(1.0f, 28.0f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.D);
         text.text = "Press any key to start";
         canStart = true;
     }

@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabSong
       objectReference: {fileID: 0}
+    - target: {fileID: 2485015690906049352, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
 --- !u!1 &542467346
@@ -527,6 +531,12 @@ PrefabInstance:
     - target: {fileID: 2485015690494657683, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
       propertyPath: m_Name
       value: PrefabSong (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485015690906049352, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
+      propertyPath: m_text
+      value: '3
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
@@ -931,6 +941,10 @@ PrefabInstance:
     - target: {fileID: 2485015690494657683, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
       propertyPath: m_Name
       value: PrefabSong (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485015690906049352, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
+      propertyPath: m_text
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
