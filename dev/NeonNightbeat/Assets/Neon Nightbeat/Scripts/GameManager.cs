@@ -14,18 +14,24 @@ public class GameManager : MonoBehaviour
     public GameObject prefabNote;
 
     public AudioSource theMusic;
-
     public bool startPlaying;
-
     private bool canStart = false;
-
     public BeatScroller beatScroller;
-
     public static GameManager instance;
+    public int currentScore;
+    public int scorePerNote = 100;
+    public TMP_Text scoreText;
+    public int currentCombo;
+    public TMP_Text currentcomboText;
+    public TMP_Text comboText;
 
     void Start()
     {
         instance = this;
+
+        scoreText.text = "" + currentScore;
+        currentcomboText.text = "";
+        comboText.text = "";
 
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
@@ -82,11 +88,19 @@ public class GameManager : MonoBehaviour
     public void NoteHit()
     {
         Debug.Log("Hit");
+        currentScore += scorePerNote + ((scorePerNote / 10) * currentCombo);
+        scoreText.text = "" + currentScore;
+        currentCombo++;
+        currentcomboText.text = "" + currentCombo;
+        comboText.text = "COMBO";
     }
 
     public void NoteMissed()
     {
         Debug.Log("Missed");
+        currentCombo = 0;
+        currentcomboText.text = "";
+        comboText.text = "";
     }
     
 }
