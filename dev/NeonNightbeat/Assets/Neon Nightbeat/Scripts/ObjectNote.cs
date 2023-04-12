@@ -20,6 +20,7 @@ public class ObjectNote : MonoBehaviour
             if (canBePressed)
             {
                 gameObject.SetActive(false);
+                GameManager.instance.NoteHit();
             } 
         }
     }
@@ -35,7 +36,7 @@ public class ObjectNote : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Receptor")
+        if (collider.CompareTag("Receptor"))
         {
             canBePressed = true;
         }
@@ -44,9 +45,10 @@ public class ObjectNote : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.tag == "Receptor")
+        if (collider.CompareTag("Receptor") && gameObject.activeSelf)
         {
             canBePressed = false;
+            GameManager.instance.NoteMissed();
         }
 
     }

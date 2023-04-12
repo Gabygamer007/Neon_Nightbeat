@@ -20,13 +20,20 @@ public class GameManager : MonoBehaviour
 
     public BeatScroller theBS;
 
+    public static GameManager instance;
+
     void Start()
     {
+        instance = this;
+
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
         factory.CreateMusicNote(prefabNote, new Vector3(-3.0f, 22.0f), new Color(255f/255f, 17f/255f, 120f/255f), KeyCode.A);
         factory.CreateMusicNote(prefabNote, new Vector3(3.0f, 22.0f), new Color(255f / 255f, 17f / 255f, 120f / 255f), KeyCode.F);
         factory.CreateMusicNote(prefabNote, new Vector3(1.0f, 28.0f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.D);
+        factory.CreateMusicNote(prefabNote, new Vector3(-1.0f, 33.8f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.S);
+        factory.CreateMusicNote(prefabNote, new Vector3(-1.0f, 36.6f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.S);
+        factory.CreateMusicNote(prefabNote, new Vector3(-1.0f, 39.3f), new Color(1f / 255f, 255f / 255f, 244f / 255f), KeyCode.S);
         text.text = "Press any key to start";
         canStart = true;
     }
@@ -47,5 +54,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NoteHit()
+    {
+        Debug.Log("Hit");
+    }
+
+    public void NoteMissed()
+    {
+        Debug.Log("Missed");
+    }
     
 }
