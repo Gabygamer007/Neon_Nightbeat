@@ -20,7 +20,23 @@ public class ObjectNote : MonoBehaviour
             if (canBePressed)
             {
                 gameObject.SetActive(false);
-                GameManager.instance.NoteHit();
+
+                if (Mathf.Abs(transform.position.y) < 3.5 || Mathf.Abs(transform.position.y) > 4.5)
+                {
+                    GameManager.instance.BadHit();
+                }
+                else if (Mathf.Abs(transform.position.y) < 3.75 || Mathf.Abs(transform.position.y) > 4.25)
+                {
+                    GameManager.instance.NormalHit();
+                }
+                else if (Mathf.Abs(transform.position.y) < 3.9 || Mathf.Abs(transform.position.y) > 4.1)
+                {
+                    GameManager.instance.GoodHit();
+                }
+                else
+                {
+                    GameManager.instance.PerfectHit();
+                }
             } 
         }
     }
