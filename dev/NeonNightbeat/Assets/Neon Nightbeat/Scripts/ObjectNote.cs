@@ -21,15 +21,11 @@ public class ObjectNote : MonoBehaviour
             {
                 gameObject.SetActive(false);
 
-                if (Mathf.Abs(transform.position.y) < 3.5 || Mathf.Abs(transform.position.y) > 4.5)
+                if (Mathf.Abs(transform.position.y) < 3.33 || Mathf.Abs(transform.position.y) > 4.67)
                 {
                     GameManager.instance.BadHit();
                 }
-                else if (Mathf.Abs(transform.position.y) < 3.75 || Mathf.Abs(transform.position.y) > 4.25)
-                {
-                    GameManager.instance.NormalHit();
-                }
-                else if (Mathf.Abs(transform.position.y) < 3.9 || Mathf.Abs(transform.position.y) > 4.1)
+                else if (Mathf.Abs(transform.position.y) < 3.67 || Mathf.Abs(transform.position.y) > 4.33)
                 {
                     GameManager.instance.GoodHit();
                 }
