@@ -36,7 +36,9 @@ public class GameManager : MonoBehaviour
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
 
-        using (var reader = new StreamReader(@"./Assets/Neon Nightbeat/Imagine_Dragons_Warriors.csv"))
+        TextAsset csv = Resources.Load<TextAsset>("Imagine_Dragons_Warriors");
+
+        using (var reader = new StreamReader(new MemoryStream(csv.bytes)))
         {
             string touche = "";
             while (!reader.EndOfStream)
