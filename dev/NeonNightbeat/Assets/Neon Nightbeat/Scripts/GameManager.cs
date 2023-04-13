@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,11 +20,20 @@ public class GameManager : MonoBehaviour
     public BeatScroller beatScroller;
     public static GameManager instance;
     public int currentScore;
-    public int scorePerNote = 100;
+    public int scorePerNote = 50;
     public TMP_Text scoreText;
     public int currentCombo;
     public TMP_Text currentcomboText;
     public TMP_Text comboText;
+    public int currentMultiplier = 0;
+
+    public int badScore;
+    public int goodScore;
+    public int perfectScore;
+
+    List<double> listAccuracy;
+    double accuracy = 0;
+    public TMP_Text accuracyText;
 
     void Start()
     {
@@ -32,6 +42,11 @@ public class GameManager : MonoBehaviour
         scoreText.text = "" + currentScore;
         currentcomboText.text = "";
         comboText.text = "";
+        badScore = scorePerNote / 2;
+        goodScore = scorePerNote + (scorePerNote / 2);
+        perfectScore = scorePerNote * 2;
+
+        listAccuracy = new List<double>();
 
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
@@ -87,20 +102,58 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit");
-        currentScore += scorePerNote + ((scorePerNote / 10) * currentCombo);
+        //Debug.Log("Hit");
+        //currentScore += scorePerNote + ((scorePerNote / 10) * currentCombo);
         scoreText.text = "" + currentScore;
         currentCombo++;
         currentcomboText.text = "" + currentCombo;
         comboText.text = "COMBO";
+
+        currentMultiplier = Mathf.FloorToInt(Mathf.Sqrt(currentCombo));
+
+        for (int i = 0; i < listAccuracy.Count; i++)
+        {
+            accuracy = 0;
+            accuracy += listAccuracy.Sum();
+            accuracy /= listAccuracy.Count;
+            accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
+        }
+    }
+
+    public void BadHit()
+    {
+        currentScore += badScore + ((badScore / 10) * currentMultiplier);
+        listAccuracy.Add(25);
+        NoteHit();
+    }
+
+    public void NormalHit()
+    {
+        currentScore += scorePerNote + ((scorePerNote / 10) * currentMultiplier);
+        listAccuracy.Add(50);
+        NoteHit();
+    }
+
+    public void GoodHit()
+    {
+        currentScore += goodScore + ((goodScore / 10) * currentMultiplier);
+        listAccuracy.Add(75);
+        NoteHit();
+    }
+
+    public void PerfectHit()
+    {
+        currentScore += perfectScore + ((perfectScore / 10) * currentMultiplier);
+        listAccuracy.Add(100);
+        NoteHit();
     }
 
     public void NoteMissed()
     {
-        Debug.Log("Missed");
         currentCombo = 0;
-        currentcomboText.text = "";
-        comboText.text = "";
+        currentcomboText.text = "" + currentCombo;
+        comboText.text = "COMBO";
+        currentMultiplier = 0;
     }
     
 }
