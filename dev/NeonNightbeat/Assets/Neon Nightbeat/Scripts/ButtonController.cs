@@ -33,7 +33,5 @@ public class ButtonController : MonoBehaviour
         {
             spriteRenderer.color = baseColor;
         }
-
-
     }
 }

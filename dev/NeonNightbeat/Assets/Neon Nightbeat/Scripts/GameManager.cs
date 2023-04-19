@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject prefabNote;
 
+    public Transform conteneurRecepteurs;
+    private Transform[] recepteurs = new Transform[4];
+
     public AudioSource theMusic;
     public bool startPlaying;
     private bool canStart = false;
@@ -56,6 +59,14 @@ public class GameManager : MonoBehaviour
 
         TextAsset csv = Resources.Load<TextAsset>("Imagine_Dragons_Warriors");
 
+        ButtonController scriptBouton;
+
+        for (int i = 0; i < 4; i++)
+        {
+            scriptBouton = conteneurRecepteurs.GetChild(i).gameObject.GetComponent<ButtonController>();
+            scriptBouton.keyToPress = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("touche" + (i + 1)));
+        }
+        
         using (var reader = new StreamReader(new MemoryStream(csv.bytes)))
         {
             string touche = "";

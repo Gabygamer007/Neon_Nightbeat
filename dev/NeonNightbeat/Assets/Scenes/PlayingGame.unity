@@ -1998,6 +1998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1846499681}
   prefabNote: {fileID: 3911679419761654007, guid: 01fbdde6b842f304f8eafd405e82ae46, type: 3}
+  conteneurRecepteurs: {fileID: 336589958}
   theMusic: {fileID: 1426448485}
   startPlaying: 0
   beatScroller: {fileID: 2008834837}

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class KeyBinding : MonoBehaviour
 {
     private KeyCode[] defaultKeys = new KeyCode[4];
-    private Button[] buttons;
     private TMP_Text[] buttonTexts;
 
     private int buttonIndex = 0;
@@ -16,7 +15,6 @@ public class KeyBinding : MonoBehaviour
 
     void Start()
     {
-        buttons = GetComponentsInChildren<Button>();
         buttonTexts = GetComponentsInChildren<TMP_Text>();
         for (int i = 0; i < 4; i++)
         {
@@ -46,15 +44,26 @@ public class KeyBinding : MonoBehaviour
     {
         if (isWaitingForInput)
         {
-            for (int i = (int)KeyCode.A; i <= (int)KeyCode.Z; i++)
+            if (!Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Input.GetKeyDown((KeyCode)i) && !IsKeyAlreadyBound((KeyCode)i))
+                for (int i = (int)KeyCode.A; i <= (int)KeyCode.Z; i++)
                 {
-                    key = (KeyCode)i;
-                    isWaitingForInput = false;
-                    buttonTexts[buttonIndex].text = key.ToString();
-                    break;
+                    if (Input.GetKeyDown((KeyCode)i) && !IsKeyAlreadyBound((KeyCode)i))
+                    {
+                        key = (KeyCode)i;
+                        isWaitingForInput = false;
+                        buttonTexts[buttonIndex].text = key.ToString();
+                        string touche = string.Concat("touche" + (buttonIndex + 1));
+                        PlayerPrefs.SetString(touche, key.ToString());
+                        break;
+                    }
                 }
+            }
+            else
+            {
+                key = defaultKeys[buttonIndex];
+                buttonTexts[buttonIndex].text = defaultKeys[buttonIndex].ToString();
+                isWaitingForInput = false;
             }
         }
     }
