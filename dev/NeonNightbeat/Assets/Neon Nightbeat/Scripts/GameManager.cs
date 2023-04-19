@@ -38,11 +38,19 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text hitText;
 
+    public GameObject resultsScreen;
+    public TMP_Text badHitText, goodHitText, perfectHitText, missText, rankText;
+    public int nbBadHit = 0;
+    public int nbGoodHit = 0;
+    public int nbPerfectHit = 0;
+    public int nbMiss = 0;
+    public TMP_Text finalScoreText;
+
     void Start()
     {
         instance = this;
 
-        scoreText.text = "" + currentScore;
+        scoreText.text = currentScore.ToString();
         currentcomboText.text = "";
         comboText.text = "";
         badScore = scorePerNote / 2;
@@ -103,13 +111,56 @@ public class GameManager : MonoBehaviour
                 theMusic.Play();
             }
         }
+        else
+        {
+            if (currentCombo == 6 && !resultsScreen.activeInHierarchy)
+            {
+                resultsScreen.SetActive(true);
+
+                badHitText.text = nbBadHit.ToString();
+                goodHitText.text = nbGoodHit.ToString();
+                perfectHitText.text = nbPerfectHit.ToString();
+                missText.text = nbMiss.ToString();
+            }
+
+            string rank = "F";
+
+            if (accuracy > 40)
+            {
+                rank = "D";
+                if (accuracy > 55)
+                {
+                    rank = "C";
+                    if (accuracy > 75)
+                    {
+                        rank = "B";
+                        if (accuracy > 85)
+                        {
+                            rank = "A";
+                            if (accuracy > 95)
+                            {
+                                rank = "S";
+                                if (accuracy == 100)
+                                {
+                                    rank = "SS";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            rankText.text = rank;
+
+            finalScoreText.text = currentScore.ToString();
+        }
     }
 
     public void NoteHit()
     {
-        scoreText.text = "" + currentScore;
+        scoreText.text = currentScore.ToString();
         currentCombo++;
-        currentcomboText.text = "" + currentCombo;
+        currentcomboText.text = currentCombo.ToString();
         comboText.text = "COMBO";
 
         currentMultiplier = Mathf.FloorToInt(Mathf.Sqrt(currentCombo));
@@ -123,6 +174,7 @@ public class GameManager : MonoBehaviour
         NoteHit();
         hitText.text = "BAD";
         hitText.color = Color.yellow;
+        nbBadHit++;
     }
 
     public void GoodHit()
@@ -132,6 +184,7 @@ public class GameManager : MonoBehaviour
         NoteHit();
         hitText.text = "GOOD";
         hitText.color = Color.cyan;
+        nbGoodHit++;
     }
 
     public void PerfectHit()
@@ -141,18 +194,20 @@ public class GameManager : MonoBehaviour
         NoteHit();
         hitText.text = "PERFECT!";
         hitText.color = Color.green;
+        nbPerfectHit++;
     }
 
     public void NoteMissed()
     {
         currentCombo = 0;
-        currentcomboText.text = "" + currentCombo;
+        currentcomboText.text = currentCombo.ToString();
         comboText.text = "COMBO";
         currentMultiplier = 0;
         hitText.text = "MISS";
         hitText.color = Color.red;
         listAccuracy.Add(0);
         UpdateAccuracy();
+        nbMiss++;
     }
 
     public void UpdateAccuracy()
@@ -162,7 +217,8 @@ public class GameManager : MonoBehaviour
             accuracy = 0;
             accuracy += listAccuracy.Sum();
             accuracy /= listAccuracy.Count;
-            accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
+            //accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
+            accuracyText.text = accuracy.ToString("F2") + " %";
         }
     }
     
