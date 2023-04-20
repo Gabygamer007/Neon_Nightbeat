@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
+
         text.text = "Press any key to start";
         canStart = true;
     }
@@ -124,7 +126,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (currentCombo == 6 && !resultsScreen.activeInHierarchy)
+            if (currentCombo == 100 && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
 
