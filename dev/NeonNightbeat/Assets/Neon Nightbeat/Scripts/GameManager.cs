@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private Transform[] recepteurs = new Transform[4];
 
     public AudioSource theMusic;
+    public AudioSource theMusic2;
     public bool startPlaying;
     private bool canStart = false;
     public BeatScroller beatScroller;
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
 
         theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
+        theMusic2.volume = PlayerPrefs.GetInt("volume")/100.0f;
 
         text.text = "Press any key to start";
         canStart = true;
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
     {
         if (!startPlaying)
         {
+            theMusic2.Pause();
             if (Input.anyKeyDown && canStart)
             {
                 startPlaying = true;
