@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class GameManager : MonoBehaviour
     private Transform[] recepteurs = new Transform[4];
 
     public AudioSource theMusic;
-    public bool startPlaying;
+    private bool startPlaying;
     private bool canStart = false;
     public BeatScroller beatScroller;
     public static GameManager instance;
+    private bool gamePaused = false;
+    private bool gameUnpausing = false;
 
     public int currentScore;
     public int scorePerNote = 100;
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
     public int nbPerfectHit = 0;
     public int nbMiss = 0;
     public TMP_Text finalScoreText;
+    public TMP_Text textCountdown;
+    private List<Transform> notes = new List<Transform>();
 
     void Start()
     {
@@ -106,6 +111,9 @@ public class GameManager : MonoBehaviour
 
         theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
 
+        notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
+        notes.Remove(beatScroller.transform);
+
         text.text = "Press any key to start";
         canStart = true;
     }
@@ -118,14 +126,32 @@ public class GameManager : MonoBehaviour
             if (Input.anyKeyDown && canStart)
             {
                 startPlaying = true;
-                Destroy(GameObject.Find("TextStart"));
+                text.text = "";
                 beatScroller.hasStarted = true;
 
                 theMusic.Play();
             }
         }
+        else if (gamePaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!gameUnpausing)
+            {
+                StartCoroutine(UnPause());
+                gameUnpausing = true;
+            }
+            
+        }
         else
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gamePaused = true;
+                beatScroller.hasStarted = false;
+                theMusic.Pause();
+                text.text = "Game paused";
+                EnabledDisableNotes(!gamePaused);
+                
+            }
             if (currentCombo == 100 && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
@@ -167,6 +193,25 @@ public class GameManager : MonoBehaviour
 
             finalScoreText.text = currentScore.ToString();
         }
+        if (!gamePaused && !gameUnpausing)
+        {
+            foreach (Transform note in notes)
+            {
+                if (note.transform.position.y > 5f)
+                {
+                    note.gameObject.SetActive(false);
+                }
+                else if (note.transform.position.y < 5.0f && note.transform.position.y > 4.99f)
+                {
+                    note.gameObject.SetActive(true);
+                }
+                else if (note.transform.position.y < -5f)
+                {
+                    note.gameObject.SetActive(false);
+                }
+            }
+        }
+        
     }
 
     public void NoteHit()
@@ -233,6 +278,36 @@ public class GameManager : MonoBehaviour
             //accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
             accuracyText.text = accuracy.ToString("F2") + " %";
         }
+    }
+
+    public void EnabledDisableNotes(bool enable)
+    {
+        foreach (Transform note in beatScroller.transform)
+        {
+            ObjectNote[] scripts = note.GetComponents<ObjectNote>();
+            foreach (ObjectNote script in scripts)
+            {
+                script.enabled = enable;
+            }
+        }
+    }
+
+    IEnumerator UnPause()
+    {
+        text.text = "Starting in";
+        textCountdown.text = "3";
+        yield return new WaitForSeconds(1.0f);
+        textCountdown.text = "2";
+        yield return new WaitForSeconds(1.0f);
+        textCountdown.text = "1";
+        yield return new WaitForSeconds(1.0f);
+        textCountdown.text = "";
+        text.text = "";
+        theMusic.UnPause();
+        beatScroller.hasStarted = true;
+        gamePaused = false;
+        gameUnpausing = false;
+        EnabledDisableNotes(!gamePaused);
     }
     
 }

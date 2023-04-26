@@ -19,7 +19,6 @@ public class ObjectNote : MonoBehaviour
         if (Input.GetKeyDown(keyToPress)){
             if (canBePressed)
             {
-                gameObject.SetActive(false);
 
                 if (Mathf.Abs(transform.position.y) < 3.35 || Mathf.Abs(transform.position.y) > 4.65)
                 {
@@ -33,6 +32,7 @@ public class ObjectNote : MonoBehaviour
                 {
                     GameManager.instance.PerfectHit();
                 }
+                gameObject.SetActive(false);
             } 
         }
     }
