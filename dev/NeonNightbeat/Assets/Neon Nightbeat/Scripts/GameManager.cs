@@ -124,7 +124,17 @@ public class GameManager : MonoBehaviour
                 Destroy(GameObject.Find("TextStart"));
                 beatScroller.hasStarted = true;
 
-                theMusic.Play();
+                print(GameMenu.instance.music);
+
+                if (GameMenu.instance.music == 2)
+                {
+                    theMusic2.Play();
+                }
+                else if (GameMenu.instance.music == 1 || GameMenu.instance.music == 0) // Si aucune musique est choisi, la première musique jouera
+                {
+                    theMusic.Play();
+                }
+
             }
         }
         else
@@ -139,6 +149,8 @@ public class GameManager : MonoBehaviour
                 missText.text = nbMiss.ToString();
             }
 
+
+            // Change le rank en fonction de l'accuracy
             string rank = "F";
 
             if (accuracy > 40)
