@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     private Transform[] recepteurs = new Transform[4];
 
     public AudioSource theMusic;
-    private bool startPlaying;
+    public AudioSource theMusic2;
+    public bool startPlaying;
     private bool canStart = false;
     public BeatScroller beatScroller;
     public static GameManager instance;
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
         }
 
         theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
+        theMusic2.volume = PlayerPrefs.GetInt("volume")/100.0f;
 
         notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
         notes.Remove(beatScroller.transform);
@@ -129,7 +131,14 @@ public class GameManager : MonoBehaviour
                 text.text = "";
                 beatScroller.hasStarted = true;
 
-                theMusic.Play();
+                if (GameMenu.instance.music == 2)
+                {
+                    theMusic2.Play();
+                }
+                else if (GameMenu.instance.music == 1 || GameMenu.instance.music == 0) // Si aucune musique est choisi, la première musique jouera
+                {
+                    theMusic.Play();
+                }
             }
         }
         else if (gamePaused && Input.GetKeyDown(KeyCode.Escape))
@@ -162,6 +171,8 @@ public class GameManager : MonoBehaviour
                 missText.text = nbMiss.ToString();
             }
 
+
+            // Change le rank en fonction de l'accuracy
             string rank = "F";
 
             if (accuracy > 40)
@@ -275,7 +286,6 @@ public class GameManager : MonoBehaviour
             accuracy = 0;
             accuracy += listAccuracy.Sum();
             accuracy /= listAccuracy.Count;
-            //accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
             accuracyText.text = accuracy.ToString("F2") + " %";
         }
     }
