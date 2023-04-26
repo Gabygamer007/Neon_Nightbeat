@@ -230,7 +230,6 @@ public class GameManager : MonoBehaviour
             accuracy = 0;
             accuracy += listAccuracy.Sum();
             accuracy /= listAccuracy.Count;
-            //accuracyText.text = decimal.Round(((decimal)accuracy), 2) + " %";
             accuracyText.text = accuracy.ToString("F2") + " %";
         }
     }
