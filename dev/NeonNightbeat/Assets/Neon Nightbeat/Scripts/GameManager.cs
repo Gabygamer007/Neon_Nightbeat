@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text textCountdown;
     private List<Transform> notes = new List<Transform>();
 
+    private bool speedUp = false;
+
     void Start()
     {
         instance = this;
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
 
         text.text = "Press any key to start";
         canStart = true;
+
+        beatScroller.beatTempo = GameMenu.instance.tempo/60f;
     }
 
     // Update is called once per frame
@@ -160,7 +164,7 @@ public class GameManager : MonoBehaviour
                 EnabledDisableNotes(!gamePaused);
                 
             }
-            if (currentCombo == 100 && !resultsScreen.activeInHierarchy)
+            if (currentCombo == 1000 && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
 
@@ -168,6 +172,22 @@ public class GameManager : MonoBehaviour
                 goodHitText.text = nbGoodHit.ToString();
                 perfectHitText.text = nbPerfectHit.ToString();
                 missText.text = nbMiss.ToString();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (!speedUp)
+                {
+                    beatScroller.beatTempo *= 5;
+                    theMusic.pitch *= 5.0f;
+                    speedUp = true;
+                }
+                else
+                {
+                    beatScroller.beatTempo /= 5;
+                    theMusic.pitch /= 5.0f;
+                    speedUp = false;
+                }
+
             }
 
 

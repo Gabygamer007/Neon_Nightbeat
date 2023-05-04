@@ -36,13 +36,13 @@ public class GameMenu : MonoBehaviour
     public void Music2()
     {
         music = "Silhouette";
-        tempo = 273;
+        tempo = 637;
     }
 
     public void Music3()
     {
         music = "Ransom";
-        tempo = 270;
+        tempo = 450;
     }
 
 }
