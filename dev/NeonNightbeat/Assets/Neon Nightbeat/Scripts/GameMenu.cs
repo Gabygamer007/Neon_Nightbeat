@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    public string music = "Imagine_Dragons_Warriors";
+    public string music = "";
+    public int tempo = 0;
     public static GameMenu instance;
 
     void Start()
@@ -20,12 +21,16 @@ public class GameMenu : MonoBehaviour
 
     public void PlayMusic()
     {
-        SceneManager.LoadScene("PlayingGame");
+        if (music != "0")
+        {
+            SceneManager.LoadScene("PlayingGame");
+        }
     }
 
     public void Music1()
     {
         music = "Imagine_Dragons_Warriors";
+        tempo = 234;
     }
 
     public void Music2()
