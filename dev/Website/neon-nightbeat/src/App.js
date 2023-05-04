@@ -12,7 +12,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>NEON NIGHTBEAT</h1>
       {
         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
       }
