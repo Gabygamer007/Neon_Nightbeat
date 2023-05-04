@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    public int music = 0;
+    public string music = "Imagine_Dragons_Warriors";
     public static GameMenu instance;
 
     void Start()
@@ -25,12 +25,12 @@ public class GameMenu : MonoBehaviour
 
     public void Music1()
     {
-        music = 1;
+        music = "Imagine_Dragons_Warriors";
     }
 
     public void Music2()
     {
-        music = 2;
+        music = "Departure";
     }
 
 }
