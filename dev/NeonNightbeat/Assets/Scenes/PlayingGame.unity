@@ -2064,7 +2064,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031585588}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3826,7 +3826,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 694.61, y: 90.65}
+  m_SizeDelta: {x: 919.56, y: 90.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846499681
 MonoBehaviour:
@@ -4040,19 +4040,11 @@ MonoBehaviour:
   prefabNote: {fileID: 3911679419761654007, guid: 01fbdde6b842f304f8eafd405e82ae46, type: 3}
   conteneurRecepteurs: {fileID: 336589958}
   theMusic: {fileID: 1426448485}
-  theMusic2: {fileID: 1093175059}
   startPlaying: 0
   beatScroller: {fileID: 2008834837}
-  currentScore: 0
-  scorePerNote: 100
   scoreText: {fileID: 1518595165}
-  currentCombo: 0
   currentcomboText: {fileID: 604657720}
   comboText: {fileID: 1841931232}
-  currentMultiplier: 0
-  badScore: 0
-  goodScore: 0
-  perfectScore: 0
   accuracyText: {fileID: 760463140}
   hitText: {fileID: 801609586}
   resultsScreen: {fileID: 1517506019}
@@ -4061,10 +4053,6 @@ MonoBehaviour:
   perfectHitText: {fileID: 373184969}
   missText: {fileID: 1568146344}
   rankText: {fileID: 1732801932}
-  nbBadHit: 0
-  nbGoodHit: 0
-  nbPerfectHit: 0
-  nbMiss: 0
   finalScoreText: {fileID: 1689148782}
   textCountdown: {fileID: 1031585590}
 --- !u!1 &2099356136

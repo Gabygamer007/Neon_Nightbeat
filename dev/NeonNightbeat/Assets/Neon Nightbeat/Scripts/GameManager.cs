@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class GameManager : MonoBehaviour
     private Transform[] recepteurs = new Transform[4];
 
     public AudioSource theMusic;
-    public AudioSource theMusic2;
     public bool startPlaying;
     private bool canStart = false;
     public BeatScroller beatScroller;
@@ -27,17 +27,17 @@ public class GameManager : MonoBehaviour
     private bool gamePaused = false;
     private bool gameUnpausing = false;
 
-    public int currentScore;
-    public int scorePerNote = 100;
+    private int currentScore;
+    private int scorePerNote = 100;
     public TMP_Text scoreText;
-    public int currentCombo;
+    private int currentCombo;
     public TMP_Text currentcomboText;
     public TMP_Text comboText;
-    public int currentMultiplier = 0;
+    private int currentMultiplier = 0;
 
-    public int badScore;
-    public int goodScore;
-    public int perfectScore;
+    private int badScore;
+    private int goodScore;
+    private int perfectScore;
 
     List<double> listAccuracy;
     double accuracy = 0;
@@ -47,10 +47,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject resultsScreen;
     public TMP_Text badHitText, goodHitText, perfectHitText, missText, rankText;
-    public int nbBadHit = 0;
-    public int nbGoodHit = 0;
-    public int nbPerfectHit = 0;
-    public int nbMiss = 0;
+    private int nbBadHit = 0;
+    private int nbGoodHit = 0;
+    private int nbPerfectHit = 0;
+    private int nbMiss = 0;
     public TMP_Text finalScoreText;
     public TMP_Text textCountdown;
     private List<Transform> notes = new List<Transform>();
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
 
-        TextAsset csv = Resources.Load<TextAsset>("Imagine_Dragons_Warriors");
+        TextAsset csv = Resources.Load<TextAsset>(GameMenu.instance.music);
 
         ButtonController scriptBouton;
 
@@ -110,8 +110,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        theMusic.clip = (AudioClip)Resources.Load(GameMenu.instance.music, typeof(AudioClip));
         theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
-        theMusic2.volume = PlayerPrefs.GetInt("volume")/100.0f;
 
         notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
         notes.Remove(beatScroller.transform);
@@ -130,23 +130,22 @@ public class GameManager : MonoBehaviour
                 startPlaying = true;
                 text.text = "";
                 beatScroller.hasStarted = true;
-
-                if (GameMenu.instance.music == 2)
-                {
-                    theMusic2.Play();
-                }
-                else if (GameMenu.instance.music == 1 || GameMenu.instance.music == 0) // Si aucune musique est choisi, la première musique jouera
-                {
-                    theMusic.Play();
-                }
+                theMusic.Play();
             }
         }
-        else if (gamePaused && Input.GetKeyDown(KeyCode.Escape))
+        else if (gamePaused)
         {
-            if (!gameUnpausing)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                StartCoroutine(UnPause());
-                gameUnpausing = true;
+                if (!gameUnpausing)
+                {
+                    StartCoroutine(UnPause());
+                    gameUnpausing = true;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("GameMenu");
             }
             
         }
@@ -157,7 +156,7 @@ public class GameManager : MonoBehaviour
                 gamePaused = true;
                 beatScroller.hasStarted = false;
                 theMusic.Pause();
-                text.text = "Game paused";
+                text.text = "Game paused \n Press Escape to unpause \n Press Space to leave";
                 EnabledDisableNotes(!gamePaused);
                 
             }
@@ -208,15 +207,15 @@ public class GameManager : MonoBehaviour
         {
             foreach (Transform note in notes)
             {
-                if (note.transform.position.y > 5f)
+                if (note.transform.position.y > 6f)
                 {
                     note.gameObject.SetActive(false);
                 }
-                else if (note.transform.position.y < 5.0f && note.transform.position.y > 4.99f)
+                else if (note.transform.position.y < 6.0f && note.transform.position.y > 4.99f)
                 {
                     note.gameObject.SetActive(true);
                 }
-                else if (note.transform.position.y < -5f)
+                else if (note.transform.position.y < -6f)
                 {
                     note.gameObject.SetActive(false);
                 }
