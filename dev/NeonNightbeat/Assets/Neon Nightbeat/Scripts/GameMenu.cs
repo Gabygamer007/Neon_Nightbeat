@@ -35,7 +35,7 @@ public class GameMenu : MonoBehaviour
 
     public void Music2()
     {
-        music = "Departure";
+        music = "Silhouette";
     }
 
 }

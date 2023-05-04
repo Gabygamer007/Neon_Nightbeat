@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: 0
+  tempo: 0
 --- !u!1 &639112394
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485015690477309802, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
       propertyPath: m_text
-      value: 'Masatoshi Ono
+      value: 'KANA-BOON
 
 '
       objectReference: {fileID: 0}
@@ -895,11 +896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485015690859685224, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
       propertyPath: m_text
-      value: 1:30
+      value: 1:29
       objectReference: {fileID: 0}
     - target: {fileID: 2485015690906049352, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
       propertyPath: m_text
-      value: Departure
+      value: Silhouette
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0becc7b373d3bb944ac896dc59dc005a, type: 3}
