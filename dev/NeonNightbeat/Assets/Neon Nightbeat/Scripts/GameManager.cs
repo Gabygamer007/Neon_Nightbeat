@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
                     gameUnpausing = true;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) && !gameUnpausing)
             {
                 SceneManager.LoadScene("GameMenu");
             }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
                 EnabledDisableNotes(!gamePaused);
                 
             }
-            if (currentCombo == 1000 && !resultsScreen.activeInHierarchy)
+            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy &&  !gamePaused)
             {
                 resultsScreen.SetActive(true);
 
@@ -173,22 +173,22 @@ public class GameManager : MonoBehaviour
                 perfectHitText.text = nbPerfectHit.ToString();
                 missText.text = nbMiss.ToString();
             }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (!speedUp)
-                {
-                    beatScroller.beatTempo *= 5;
-                    theMusic.pitch *= 5.0f;
-                    speedUp = true;
-                }
-                else
-                {
-                    beatScroller.beatTempo /= 5;
-                    theMusic.pitch /= 5.0f;
-                    speedUp = false;
-                }
-
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    if (!speedUp)
+            //    {
+            //        beatScroller.beatTempo *= 10;
+            //        theMusic.pitch *= 10.0f;
+            //        speedUp = true;
+            //    }
+            //    else
+            //    {
+            //        beatScroller.beatTempo /= 10;
+            //        theMusic.pitch /= 10.0f;
+            //        speedUp = false;
+            //    }
+            //
+            //}
 
 
             // Change le rank en fonction de l'accuracy
