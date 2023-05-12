@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
     private bool gameUnpausing = false;
 
     private int currentScore;
-    private int scorePerNote = 100;
+    private int scorePerNote = 300;
     public TMP_Text scoreText;
     private int currentCombo;
     public TMP_Text currentcomboText;
     public TMP_Text comboText;
     private int currentMultiplier = 0;
+    private int highestCombo = 0;
+    public TMP_Text highestComboText;
 
     private int badScore;
     private int goodScore;
@@ -42,10 +44,13 @@ public class GameManager : MonoBehaviour
     List<double> listAccuracy;
     double accuracy = 0;
     public TMP_Text accuracyText;
+    public TMP_Text accuracyResult;
 
     public TMP_Text hitText;
 
     public GameObject resultsScreen;
+    public GameObject gameScreen;
+    public GameObject recepteursButtons;
     public TMP_Text badHitText, goodHitText, perfectHitText, missText, rankText;
     private int nbBadHit = 0;
     private int nbGoodHit = 0;
@@ -166,6 +171,8 @@ public class GameManager : MonoBehaviour
             }
             if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy &&  !gamePaused)
             {
+                gameScreen.SetActive(false);
+                recepteursButtons.SetActive(false);
                 resultsScreen.SetActive(true);
 
                 badHitText.text = nbBadHit.ToString();
@@ -173,22 +180,22 @@ public class GameManager : MonoBehaviour
                 perfectHitText.text = nbPerfectHit.ToString();
                 missText.text = nbMiss.ToString();
             }
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    if (!speedUp)
-            //    {
-            //        beatScroller.beatTempo *= 10;
-            //        theMusic.pitch *= 10.0f;
-            //        speedUp = true;
-            //    }
-            //    else
-            //    {
-            //        beatScroller.beatTempo /= 10;
-            //        theMusic.pitch /= 10.0f;
-            //        speedUp = false;
-            //    }
-            //
-            //}
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (!speedUp)
+                {
+                    beatScroller.beatTempo *= 10;
+                    theMusic.pitch *= 10.0f;
+                    speedUp = true;
+                }
+                else
+                {
+                    beatScroller.beatTempo /= 10;
+                    theMusic.pitch /= 10.0f;
+                    speedUp = false;
+                }
+            
+            }
 
 
             // Change le rank en fonction de l'accuracy
@@ -222,6 +229,8 @@ public class GameManager : MonoBehaviour
             rankText.text = rank;
 
             finalScoreText.text = currentScore.ToString();
+            highestComboText.text = highestCombo + "x";
+            accuracyResult.text = accuracy.ToString("F2") + " %";
         }
         if (!gamePaused && !gameUnpausing)
         {
@@ -253,6 +262,11 @@ public class GameManager : MonoBehaviour
 
         currentMultiplier = Mathf.FloorToInt(Mathf.Sqrt(currentCombo));
         UpdateAccuracy();
+
+        if (highestCombo < currentCombo)
+        {
+            highestCombo = currentCombo;
+        }
     }
 
     public void BadHit()
@@ -338,5 +352,10 @@ public class GameManager : MonoBehaviour
         gameUnpausing = false;
         EnabledDisableNotes(!gamePaused);
     }
-    
+
+    public void GoBack()
+    {
+        SceneManager.LoadScene("GameMenu");
+    }
+
 }
