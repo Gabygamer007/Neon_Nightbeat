@@ -14,18 +14,13 @@ public class GameManager : MonoBehaviour
     private TMP_Text text;
 
     [SerializeField]
-    public GameObject prefabNote;
+    private GameObject prefabNote;
 
     public Transform conteneurRecepteurs;
-    private Transform[] recepteurs = new Transform[4];
 
     public AudioSource theMusic;
-    public bool startPlaying;
-    private bool canStart = false;
     public BeatScroller beatScroller;
     public static GameManager instance;
-    private bool gamePaused = false;
-    private bool gameUnpausing = false;
 
     private int currentScore;
     private int scorePerNote = 300;
@@ -59,8 +54,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text finalScoreText;
     public TMP_Text textCountdown;
     private List<Transform> notes = new List<Transform>();
+    public bool speedUp = false;
 
-    private bool speedUp = false;
+    private StateMachine theStateMachine;
 
     void Start()
     {
@@ -124,133 +120,17 @@ public class GameManager : MonoBehaviour
         notes.Remove(beatScroller.transform);
 
         text.text = "Press any key to start";
-        canStart = true;
 
         beatScroller.beatTempo = GameMenu.instance.tempo/60f;
+
+        theStateMachine = new StateMachine();
+        theStateMachine.Init(new WaitForStart());
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (!startPlaying)
-        {
-            if (Input.anyKeyDown && canStart)
-            {
-                startPlaying = true;
-                text.text = "";
-                beatScroller.hasStarted = true;
-                theMusic.Play();
-            }
-        }
-        else if (gamePaused)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (!gameUnpausing)
-                {
-                    StartCoroutine(UnPause());
-                    gameUnpausing = true;
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Space) && !gameUnpausing)
-            {
-                SceneManager.LoadScene("GameMenu");
-            }
-            
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                gamePaused = true;
-                beatScroller.hasStarted = false;
-                theMusic.Pause();
-                text.text = "Game paused \n Press Escape to unpause \n Press Space to leave";
-                EnabledDisableNotes(!gamePaused);
-                
-            }
-            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy &&  !gamePaused)
-            {
-                gameScreen.SetActive(false);
-                recepteursButtons.SetActive(false);
-                resultsScreen.SetActive(true);
-
-                badHitText.text = nbBadHit.ToString();
-                goodHitText.text = nbGoodHit.ToString();
-                perfectHitText.text = nbPerfectHit.ToString();
-                missText.text = nbMiss.ToString();
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (!speedUp)
-                {
-                    beatScroller.beatTempo *= 10;
-                    theMusic.pitch *= 10.0f;
-                    speedUp = true;
-                }
-                else
-                {
-                    beatScroller.beatTempo /= 10;
-                    theMusic.pitch /= 10.0f;
-                    speedUp = false;
-                }
-            
-            }
-
-
-            // Change le rank en fonction de l'accuracy
-            string rank = "F";
-
-            if (accuracy > 40)
-            {
-                rank = "D";
-                if (accuracy > 55)
-                {
-                    rank = "C";
-                    if (accuracy > 75)
-                    {
-                        rank = "B";
-                        if (accuracy > 85)
-                        {
-                            rank = "A";
-                            if (accuracy > 95)
-                            {
-                                rank = "S";
-                                if (accuracy == 100)
-                                {
-                                    rank = "SS";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            rankText.text = rank;
-
-            finalScoreText.text = currentScore.ToString();
-            highestComboText.text = highestCombo + "x";
-            accuracyResult.text = accuracy.ToString("F2") + " %";
-        }
-        if (!gamePaused && !gameUnpausing)
-        {
-            foreach (Transform note in notes)
-            {
-                if (note.transform.position.y > 6f)
-                {
-                    note.gameObject.SetActive(false);
-                }
-                else if (note.transform.position.y < 6.0f && note.transform.position.y > 4.99f)
-                {
-                    note.gameObject.SetActive(true);
-                }
-                else if (note.transform.position.y < -6f)
-                {
-                    note.gameObject.SetActive(false);
-                }
-            }
-        }
-        
+    {   
+        theStateMachine.Update();
     }
 
     public void NoteHit()
@@ -335,27 +215,74 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator UnPause()
-    {
-        text.text = "Starting in";
-        textCountdown.text = "3";
-        yield return new WaitForSeconds(1.0f);
-        textCountdown.text = "2";
-        yield return new WaitForSeconds(1.0f);
-        textCountdown.text = "1";
-        yield return new WaitForSeconds(1.0f);
-        textCountdown.text = "";
-        text.text = "";
-        theMusic.UnPause();
-        beatScroller.hasStarted = true;
-        gamePaused = false;
-        gameUnpausing = false;
-        EnabledDisableNotes(!gamePaused);
-    }
+
 
     public void GoBack()
     {
         SceneManager.LoadScene("GameMenu");
     }
 
+    public TMP_Text Text
+    {
+        get { return text; }
+        set { text = value; }
+    }
+
+    public BeatScroller BeatScroller
+    {
+        get { return beatScroller; }
+        set { beatScroller = value; }
+    }
+
+    public AudioSource TheMusic
+    {
+        get { return theMusic; }
+        set { theMusic = value; }
+    }
+
+    public StateMachine TheStateMachine
+    {
+        get { return theStateMachine; }
+        set { theStateMachine = value; }
+    }
+
+    public int NbBadHit{
+        get { return nbBadHit; }
+        set { nbBadHit = value; }
+    }
+    public int NbGoodHit {
+        get { return nbGoodHit; }
+        set { nbBadHit = value; }
+    }
+    public int NbPerfectHit{
+        get { return nbPerfectHit; }
+        set { nbBadHit = value; }
+    }
+    public int NbMiss{
+        get { return nbMiss; }
+        set { nbBadHit = value; }
+    }
+
+    public double Accuracy
+    {
+        get { return accuracy; }
+        set { accuracy = value; }
+    }
+
+    public int CurrentScore
+    {
+        get { return currentScore; }
+        set { currentScore = value; }
+    }
+
+    public int HighestCombo
+    {
+        get { return highestCombo; }
+        set { highestCombo = value;}
+    }
+
+    public List<Transform> Notes
+    {
+        get { return notes; }
+    }
 }
