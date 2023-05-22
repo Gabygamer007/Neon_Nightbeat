@@ -56,9 +56,15 @@ const Form = ({username, setUsername, password, setPassword, label, onSubmit}) =
         <div className="form-container login">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <h2 className="form-group-item label login">{label}</h2>
-                    <input className="form-group-item input login" type="text" placeholder="Username" id="username" value={username} onChange={(event) => setUsername(event.target.value)}/>
-                    <input className="form-group-item input login" type="password" placeholder="Password" id="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                    <h2 className="form-group-item login">{label}</h2>
+                    <div className="inputbox">
+                        <input className="form-group-item input login" type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required/>
+                        <label className="label">Username</label>
+                    </div>
+                    <div className="inputbox">
+                        <input className="form-group-item input login" type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} required/>
+                        <label className="label">Password</label>
+                    </div>
                     <button className="form-group-item btn login" onSubmit={onSubmit} type="submit">{label}</button>
                 </div>
             </form>
