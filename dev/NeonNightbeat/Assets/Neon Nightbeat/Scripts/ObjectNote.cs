@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ObjectNote : MonoBehaviour
 {
+    public event Action NoteMissed;
+    public event Action NoteHit;
+
     public bool canBePressed;
 
     public KeyCode keyToPress;
@@ -13,7 +17,6 @@ public class ObjectNote : MonoBehaviour
 
     }
 
-    
     void Update()
     {
         if (Input.GetKeyDown(keyToPress)){
@@ -33,6 +36,7 @@ public class ObjectNote : MonoBehaviour
                     GameManager.instance.PerfectHit();
                 }
                 gameObject.SetActive(false);
+                NoteHit?.Invoke();
             } 
         }
     }
@@ -59,8 +63,9 @@ public class ObjectNote : MonoBehaviour
     {
         if (collider.CompareTag("Receptor") && gameObject.activeSelf)
         {
+            NoteMissed?.Invoke();
             canBePressed = false;
-            GameManager.instance.NoteMissed();
+            GameManager.instance.NoteMissed(); 
         }
 
     }

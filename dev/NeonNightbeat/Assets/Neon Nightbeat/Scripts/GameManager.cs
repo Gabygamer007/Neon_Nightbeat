@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text textCountdown;
     private List<Transform> notes = new List<Transform>();
     public bool speedUp = false;
+    public Transform prefabObserverEffect;
 
     private StateMachine theStateMachine;
 
@@ -118,6 +119,14 @@ public class GameManager : MonoBehaviour
 
         notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
         notes.Remove(beatScroller.transform);
+
+        foreach (Transform note in notes)// donner un observer sur chaque objet note et initialiser les variables dans l'observer
+        {
+            Observer observer = note.gameObject.AddComponent<Observer>();
+            observer.subjectToObserve = note.GetComponent<ObjectNote>();
+            observer.prefabEffect = prefabObserverEffect;
+        }
+
 
         text.text = "Press any key to start";
 

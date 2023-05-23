@@ -1103,9 +1103,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336589957}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1261429765}
@@ -4920,7 +4920,6 @@ MonoBehaviour:
   prefabNote: {fileID: 3911679419761654007, guid: 01fbdde6b842f304f8eafd405e82ae46, type: 3}
   conteneurRecepteurs: {fileID: 336589958}
   theMusic: {fileID: 580280537}
-  startPlaying: 0
   beatScroller: {fileID: 2008834837}
   scoreText: {fileID: 412166796}
   currentcomboText: {fileID: 83839089}
@@ -4939,6 +4938,8 @@ MonoBehaviour:
   rankText: {fileID: 1226215660}
   finalScoreText: {fileID: 31333985}
   textCountdown: {fileID: 758456789}
+  speedUp: 0
+  prefabObserverEffect: {fileID: 400000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!1 &2141186459
 GameObject:
   m_ObjectHideFlags: 0
