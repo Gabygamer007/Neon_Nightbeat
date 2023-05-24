@@ -21,7 +21,7 @@ public class Observer : MonoBehaviour // Observer pattern based on : https://uni
 
     }
 
-    private void OnNoteHit()
+    private void OnNotePerfect()
     {
         Transform effectInstance = prefabEffect;
         ParticleSystem particleSystem = effectInstance.GetComponent<ParticleSystem>();
@@ -34,14 +34,41 @@ public class Observer : MonoBehaviour // Observer pattern based on : https://uni
         Instantiate(effectInstance, subjectToObserve.transform.position, Quaternion.identity);
         
     }
+    private void OnNoteGood()
+    {
+        Transform effectInstance = prefabEffect;
+        ParticleSystem particleSystem = effectInstance.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            ParticleSystem.MainModule mainModule = particleSystem.main;
+
+            mainModule.startColor = new ParticleSystem.MinMaxGradient(Color.cyan);
+        }
+        Instantiate(effectInstance, subjectToObserve.transform.position, Quaternion.identity);
+
+    }
+    private void OnNoteBad()
+    {
+        Transform effectInstance = prefabEffect;
+        ParticleSystem particleSystem = effectInstance.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            ParticleSystem.MainModule mainModule = particleSystem.main;
+
+            mainModule.startColor = new ParticleSystem.MinMaxGradient(Color.yellow);
+        }
+        Instantiate(effectInstance, subjectToObserve.transform.position, Quaternion.identity);
+
+    }
 
     private void Start()
     {
         if (subjectToObserve != null)
         {
             subjectToObserve.NoteMissed += OnNoteMissed;
-
-            subjectToObserve.NoteHit += OnNoteHit;
+            subjectToObserve.NotePerfect += OnNotePerfect;
+            subjectToObserve.NoteGood += OnNoteGood;
+            subjectToObserve.NoteBad += OnNoteBad;
         }
     }
 
@@ -50,8 +77,9 @@ public class Observer : MonoBehaviour // Observer pattern based on : https://uni
         if (subjectToObserve != null)
         {
             subjectToObserve.NoteMissed -= OnNoteMissed;
-
-            subjectToObserve.NoteHit -= OnNoteHit;
+            subjectToObserve.NotePerfect -= OnNotePerfect;
+            subjectToObserve.NoteGood -= OnNoteGood;
+            subjectToObserve.NoteBad -= OnNoteBad;
         }
     }
 }

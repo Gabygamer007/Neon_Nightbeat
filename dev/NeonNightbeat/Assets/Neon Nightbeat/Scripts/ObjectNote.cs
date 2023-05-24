@@ -6,7 +6,9 @@ using System;
 public class ObjectNote : MonoBehaviour
 {
     public event Action NoteMissed;
-    public event Action NoteHit;
+    public event Action NotePerfect;
+    public event Action NoteGood;
+    public event Action NoteBad;
 
     public bool canBePressed;
 
@@ -26,17 +28,19 @@ public class ObjectNote : MonoBehaviour
                 if (Mathf.Abs(transform.position.y) < 3.35 || Mathf.Abs(transform.position.y) > 4.65)
                 {
                     GameManager.instance.BadHit();
+                    NoteBad?.Invoke();
                 }
                 else if (Mathf.Abs(transform.position.y) < 3.85 || Mathf.Abs(transform.position.y) > 4.15)
                 {
                     GameManager.instance.GoodHit();
+                    NoteGood?.Invoke();
                 }
                 else
                 {
                     GameManager.instance.PerfectHit();
+                    NotePerfect?.Invoke();
                 }
                 gameObject.SetActive(false);
-                NoteHit?.Invoke();
             } 
         }
     }
