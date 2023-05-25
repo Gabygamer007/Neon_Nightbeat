@@ -38,6 +38,7 @@ export const Leaderboard = () => {
                 <div className="main-leaderboard-box">
                     <div className="leaderboard-titles">
                         <div className="username-title">USERNAME</div>
+                        <div className="music-title">MUSIC</div>
                         <div className="score-title">SCORE</div>
                         <div className="accuracy-title">ACCURACY</div>
                         <div className="combo-title">COMBO</div>
@@ -51,6 +52,13 @@ export const Leaderboard = () => {
                                 );
                             })}
 
+                        </div>
+                        <div className="music-box">
+                            {scoreList.map((scoreLeaderboard) => {
+                                return (
+                                    <div className="leaderboard-music">{scoreLeaderboard.music}</div>
+                                );
+                            })}
                         </div>
                         <div className="score-box">
                             {scoreList.map((scoreLeaderboard) => {
