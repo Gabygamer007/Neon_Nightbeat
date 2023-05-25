@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public Button logOutButton;
     void Start()
     {
-        if (!PlayerPrefs.HasKey("touche1"))
+        if (!PlayerPrefs.HasKey("touche1")) { // si il n'a pas le playerprefs touche1, c'est qu'il n'a normalement aucun playerpref
             SavePrefs();
+        }
+        if (PlayerPrefs.HasKey("username")){
+            logOutButton.gameObject.SetActive(true);
+        }
     }
 
     public void SavePrefs()
@@ -25,7 +31,15 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameMenu");
+        if(PlayerPrefs.GetString("username") != "")
+        {
+            SceneManager.LoadScene("GameMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene("LoginMenu");
+        }
+        
     }
 
     public void GoToSettings()
@@ -36,5 +50,11 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LogOut()
+    {
+        PlayerPrefs.DeleteKey("username");
+        logOutButton.gameObject.SetActive(false);
     }
 }
