@@ -1,17 +1,17 @@
-##### Neon_Nightbeat
+# Neon_Nightbeat
 
-### Créateurs
-# Matis Gaetjens et Gabriel Tremblay
+## Créateurs
+#### Matis Gaetjens et Gabriel Tremblay
 
-### Sommaire
+## Sommaire
 
 Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un compte, se connecter et afficher les scores des joueurs.
 
-#### Comment faire l'installation de notre projet
+# Comment faire l'installation de notre projet
 
-### Installation
+## Installation
 
-## Pour notre jeu Unity
+### Pour notre jeu Unity
 
 1. Installer Unity Hub
    ```sh
@@ -19,7 +19,7 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
    ```
 2. Installer la version 2021.2.19f1 de Unity
 
-## Pour notre site web
+### Pour notre site web
 
 1. Installer Node.js
    ```sh
@@ -55,15 +55,15 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
    yarn install
    ```
     
-#### Comment utiliser notre projet
+# Comment utiliser notre projet
 
-### Utilisation
+## Utilisation
 
-## Pour notre jeu Unity
+### Pour notre jeu Unity
 
 1. Seulement ouvrir l'exécutable de notre jeu (.exe)
 
-## Pour notre site web
+### Pour notre site web
 
 1. Retourner sur le terminal dirigé vers "server"
    ```sh
@@ -80,7 +80,7 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 4. Soit se créer un compte avec Register ou se connecter avec Login
    
    
-### Référence
+## Référence
 
 ???
    
