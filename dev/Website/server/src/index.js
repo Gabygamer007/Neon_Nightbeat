@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import {UserRouter} from './routes/users.js';
+import {ScoreRouter} from './routes/scores.js';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 
 app.use("/login", UserRouter);
 app.use("/register", UserRouter);
+app.use("/leaderboard", ScoreRouter);
 
 mongoose.connect("mongodb+srv://matisgaetjens:3lie2oo9@neonnightbeatdb.ya38q6y.mongodb.net/NeonNightbeatDB?retryWrites=true&w=majority")
 
