@@ -34,11 +34,12 @@ public class DatabaseAccess
         return false;
     }
 
-    public void EnterScores(string username, int score, double accuracy, int highestCombo, string rank)
+    public void EnterScores(string username, string musicName,  int score, double accuracy, int highestCombo, string rank)
     {
         BsonDocument document = new BsonDocument
         {
             { "username", username },
+            { "music", musicName },
             { "score", score },
             { "accuracy", accuracy },
             { "highestCombo", highestCombo },

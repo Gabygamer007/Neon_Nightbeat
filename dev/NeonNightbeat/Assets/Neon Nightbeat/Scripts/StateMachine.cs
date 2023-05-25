@@ -197,7 +197,7 @@ public class ResultScreen : BaseState
         gameInstance.perfectHitText.text = gameInstance.NbPerfectHit.ToString();
         gameInstance.missText.text = gameInstance.NbMiss.ToString();
 
-        db.EnterScores(PlayerPrefs.GetString("username"), gameInstance.CurrentScore, gameInstance.Accuracy, gameInstance.HighestCombo, rank);
+        db.EnterScores(PlayerPrefs.GetString("username"), gameInstance.MusicName, gameInstance.CurrentScore, gameInstance.Accuracy, gameInstance.HighestCombo, rank);
     }
     public override void Update()
     {

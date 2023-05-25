@@ -52,7 +52,7 @@ public class GameMenu : MonoBehaviour
 
     public void Music1()
     {
-        music = "Imagine_Dragons_Warriors";
+        music = "Warriors";
         tempo = 234;
         ghostMode = false;
         multiplier = 1;
