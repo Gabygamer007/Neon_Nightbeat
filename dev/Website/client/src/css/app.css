@@ -248,7 +248,7 @@ input:valid ~ label {
 .btn.logout {
     position: absolute;
     margin-top: 0px;
-    margin-left: 1650px;
+    margin-left: 85%;
     color: red;
     border: 2px solid red;
     padding: 10px 20px;
@@ -289,7 +289,7 @@ input:valid ~ label {
     border: 2px solid white;
     border-radius: 20px;
     margin-top: 25px;
-    width: 400px;
+    width: 850px;
     height: 500px;
 }
 
@@ -305,17 +305,41 @@ input:valid ~ label {
 }
 
 .username-title {
-    width: 50%;
+    width: 20%;
     text-align: center;
-    color: aquamarine;
+    color: rgb(0, 217, 255);
     padding: 10px 0px;
     border-right: 1px solid white;
 }
 
 .score-title {
-    width: 50%;
+    width: 20%;
     text-align: center;
     color: coral;
+    padding: 10px 0px;
+    border-right: 1px solid white;
+}
+
+.accuracy-title {
+    width: 20%;
+    text-align: center;
+    color:rgb(170, 0, 255);
+    padding: 10px 0px;
+    border-right: 1px solid white;
+}
+
+.combo-title {
+    width: 20%;
+    text-align: center;
+    color:rgb(187, 255, 0);
+    padding: 10px 0px;
+    border-right: 1px solid white;
+}
+
+.rank-title {
+    width: 20%;
+    text-align: center;
+    color:rgb(0, 255, 98);
     padding: 10px 0px;
 }
 
@@ -330,14 +354,36 @@ input:valid ~ label {
 
 .leaderboard-username {
     padding: 5px 0px;
-    color: white;
+    color: rgb(106, 233, 255);
     border-bottom: 1px solid white;
     border-right: 1px solid white;
 }
 
 .leaderboard-score {
     padding: 5px 0px;
-    color: white;
+    color: rgb(255, 168, 137);
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.leaderboard-accuracy {
+    padding: 5px 0px;
+    color: rgb(201, 97, 253);
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.leaderboard-combo {
+    padding: 5px 0px;
+    color: rgb(228, 255, 155);
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+
+
+.leaderboard-rank {
+    padding: 5px 0px;
+    color: rgb(146, 255, 200);
     border-bottom: 1px solid white;
 }
 
@@ -349,6 +395,27 @@ input:valid ~ label {
 }
 
 .score-box {
+    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.accuracy-box {
+    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.highest-combo-box {
+    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-box {
     text-align: center;
     width: 50%;
     display: flex;
