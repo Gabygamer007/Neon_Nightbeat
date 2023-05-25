@@ -25,12 +25,12 @@ public class ObjectNote : MonoBehaviour
             if (canBePressed)
             {
 
-                if (Mathf.Abs(transform.position.y) < 3.35 || Mathf.Abs(transform.position.y) > 4.65)
+                if (Mathf.Abs(transform.position.y) < 3.4 || Mathf.Abs(transform.position.y) > 4.6)
                 {
                     GameManager.instance.BadHit();
                     NoteBad?.Invoke();
                 }
-                else if (Mathf.Abs(transform.position.y) < 3.85 || Mathf.Abs(transform.position.y) > 4.15)
+                else if (Mathf.Abs(transform.position.y) < 3.80 || Mathf.Abs(transform.position.y) > 4.2)
                 {
                     GameManager.instance.GoodHit();
                     NoteGood?.Invoke();
