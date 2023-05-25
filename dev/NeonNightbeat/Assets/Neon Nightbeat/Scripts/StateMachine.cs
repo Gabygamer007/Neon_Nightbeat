@@ -29,7 +29,10 @@ public class WaitForStart : BaseState
     }
     public override void Exit()
     {
-
+        if (gameInstance.IsGhostMode == true)
+        {
+            gameInstance.ghostPanel.SetActive(true);
+        }
     }
 }
 
@@ -146,6 +149,11 @@ public class ResultScreen : BaseState
     {
         db = new DatabaseAccess();
 
+        if (gameInstance.IsGhostMode == true)
+        {
+            gameInstance.ghostPanel.SetActive(false);
+        }
+
 
         // Change le rank en fonction de l'accuracy
         string rank = "F";
@@ -189,7 +197,7 @@ public class ResultScreen : BaseState
         gameInstance.perfectHitText.text = gameInstance.NbPerfectHit.ToString();
         gameInstance.missText.text = gameInstance.NbMiss.ToString();
 
-        db.EnterScores(PlayerPrefs.GetString("username"), gameInstance.CurrentScore, gameInstance.Accuracy, gameInstance.HighestCombo, rank);
+        db.EnterScores(PlayerPrefs.GetString("username"), gameInstance.MusicName, gameInstance.CurrentScore, gameInstance.Accuracy, gameInstance.HighestCombo, rank);
     }
     public override void Update()
     {
