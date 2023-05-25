@@ -81,40 +81,7 @@ public class PlayingGame : BaseState
                 note.gameObject.SetActive(false);
             }
         }
-
-        // Change le rank en fonction de l'accuracy
-        string rank = "F";
-
-        if (gameInstance.Accuracy > 40)
-        {
-            rank = "D";
-            if (gameInstance.Accuracy > 55)
-            {
-                rank = "C";
-                if (gameInstance.Accuracy > 75)
-                {
-                    rank = "B";
-                    if (gameInstance.Accuracy > 85)
-                    {
-                        rank = "A";
-                        if (gameInstance.Accuracy > 95)
-                        {
-                            rank = "S";
-                            if (gameInstance.Accuracy == 100)
-                            {
-                                rank = "SS";
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        gameInstance.rankText.text = rank;
-
-        gameInstance.finalScoreText.text = gameInstance.CurrentScore.ToString();
-        gameInstance.highestComboText.text = gameInstance.HighestCombo + "x";
-        gameInstance.accuracyResult.text = gameInstance.Accuracy.ToString("F2") + " %";
+        
     }
     public override void Exit()
     {
@@ -174,8 +141,45 @@ public class PausedState : BaseState
 public class ResultScreen : BaseState
 {
     private GameManager gameInstance = GameManager.instance;
+    private DatabaseAccess db;
     public override void Enter()
     {
+        db = new DatabaseAccess();
+
+
+        // Change le rank en fonction de l'accuracy
+        string rank = "F";
+        if (gameInstance.Accuracy > 40)
+        {
+            rank = "D";
+            if (gameInstance.Accuracy > 55)
+            {
+                rank = "C";
+                if (gameInstance.Accuracy > 75)
+                {
+                    rank = "B";
+                    if (gameInstance.Accuracy > 85)
+                    {
+                        rank = "A";
+                        if (gameInstance.Accuracy > 95)
+                        {
+                            rank = "S";
+                            if (gameInstance.Accuracy == 100)
+                            {
+                                rank = "SS";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        gameInstance.rankText.text = rank;
+
+        gameInstance.finalScoreText.text = gameInstance.CurrentScore.ToString();
+        gameInstance.highestComboText.text = gameInstance.HighestCombo + "x";
+        gameInstance.accuracyResult.text = gameInstance.Accuracy.ToString("F2") + " %";
+
         gameInstance.gameScreen.SetActive(false);
         gameInstance.recepteursButtons.SetActive(false);
         gameInstance.resultsScreen.SetActive(true);
@@ -184,6 +188,8 @@ public class ResultScreen : BaseState
         gameInstance.goodHitText.text = gameInstance.NbGoodHit.ToString();
         gameInstance.perfectHitText.text = gameInstance.NbPerfectHit.ToString();
         gameInstance.missText.text = gameInstance.NbMiss.ToString();
+
+        db.EnterScores(PlayerPrefs.GetString("username"), gameInstance.CurrentScore, gameInstance.Accuracy, gameInstance.HighestCombo, rank);
     }
     public override void Update()
     {
