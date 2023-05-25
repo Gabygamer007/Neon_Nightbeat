@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private int currentMultiplier = 0;
     private int highestCombo = 0;
     public TMP_Text highestComboText;
+    private int scoreMultiplier;
+    private bool ghostMode;
 
     private int badScore;
     private int goodScore;
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject resultsScreen;
     public GameObject gameScreen;
+    public GameObject ghostPanel;
     public GameObject recepteursButtons;
     public TMP_Text badHitText, goodHitText, perfectHitText, missText, rankText;
     private int nbBadHit = 0;
@@ -56,10 +59,11 @@ public class GameManager : MonoBehaviour
     private List<Transform> notes = new List<Transform>();
     public bool speedUp = false;
     public Transform prefabObserverEffect;
+    private string musicName;
 
     private StateMachine theStateMachine;
 
-    void Start()
+    void Start() // tout initialiser quand on arrive dans la scene "PlayingGame"
     {
         instance = this;
 
@@ -70,12 +74,16 @@ public class GameManager : MonoBehaviour
         goodScore = scorePerNote;
         perfectScore = scorePerNote + (scorePerNote / 2);
 
+        scoreMultiplier = GameMenu.instance.multiplier;
+        ghostMode = GameMenu.instance.ghostMode;
+        musicName = GameMenu.instance.music;
+
         listAccuracy = new List<double>();
 
         text.text = "Loading...";
         MusicNoteFactory factory = new MusicNoteFactory();
 
-        TextAsset csv = Resources.Load<TextAsset>(GameMenu.instance.music);
+        TextAsset csv = Resources.Load<TextAsset>(musicName);
 
         ButtonController scriptBouton;
 
@@ -114,7 +122,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        theMusic.clip = (AudioClip)Resources.Load(GameMenu.instance.music, typeof(AudioClip));
+        theMusic.clip = (AudioClip)Resources.Load(musicName, typeof(AudioClip));
         theMusic.volume = PlayerPrefs.GetInt("volume")/100.0f;
 
         notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
@@ -139,7 +147,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        theStateMachine.Update();
+        theStateMachine.Update(); // changer les etats dans la machine d'etats
     }
 
     public void NoteHit()
@@ -160,7 +168,7 @@ public class GameManager : MonoBehaviour
 
     public void BadHit()
     {
-        currentScore += badScore + ((badScore / 10) * currentMultiplier);
+        currentScore += (badScore + ((badScore / 10) * currentMultiplier)) * scoreMultiplier;
         listAccuracy.Add(33.33);
         NoteHit();
         hitText.text = "BAD";
@@ -170,7 +178,7 @@ public class GameManager : MonoBehaviour
 
     public void GoodHit()
     {
-        currentScore += goodScore + ((goodScore / 10) * currentMultiplier);
+        currentScore += (goodScore + ((goodScore / 10) * currentMultiplier)) * scoreMultiplier;
         listAccuracy.Add(66.66);
         NoteHit();
         hitText.text = "GOOD";
@@ -180,7 +188,7 @@ public class GameManager : MonoBehaviour
 
     public void PerfectHit()
     {
-        currentScore += perfectScore + ((perfectScore / 10) * currentMultiplier);
+        currentScore += (perfectScore + ((perfectScore / 10) * currentMultiplier)) * scoreMultiplier;
         listAccuracy.Add(100.00);
         NoteHit();
         hitText.text = "PERFECT!";
@@ -212,7 +220,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EnabledDisableNotes(bool enable)
+    public void EnabledDisableNotes(bool enable) // ne pas pouvoir appuyer sur les notes quand on pause
     {
         foreach (Transform note in beatScroller.transform)
         {
@@ -238,58 +246,63 @@ public class GameManager : MonoBehaviour
     public BeatScroller BeatScroller
     {
         get { return beatScroller; }
-        set { beatScroller = value; }
     }
 
     public AudioSource TheMusic
     {
         get { return theMusic; }
-        set { theMusic = value; }
     }
 
     public StateMachine TheStateMachine
     {
         get { return theStateMachine; }
-        set { theStateMachine = value; }
     }
 
     public int NbBadHit{
         get { return nbBadHit; }
-        set { nbBadHit = value; }
     }
     public int NbGoodHit {
         get { return nbGoodHit; }
-        set { nbBadHit = value; }
     }
     public int NbPerfectHit{
         get { return nbPerfectHit; }
-        set { nbBadHit = value; }
     }
     public int NbMiss{
         get { return nbMiss; }
-        set { nbBadHit = value; }
     }
 
     public double Accuracy
     {
         get { return accuracy; }
-        set { accuracy = value; }
     }
 
     public int CurrentScore
     {
         get { return currentScore; }
-        set { currentScore = value; }
     }
 
     public int HighestCombo
     {
         get { return highestCombo; }
-        set { highestCombo = value;}
     }
 
     public List<Transform> Notes
     {
         get { return notes; }
+    }
+
+    public double ScoreMultiplier
+    {
+        get { return scoreMultiplier; }
+    }
+
+    public bool IsGhostMode
+    {
+        get { return ghostMode; }
+    }
+
+    public string MusicName
+    {
+        get { return musicName; }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Receptor
   - song 1
   - song 2
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -50,7 +51,10 @@ TagManager:
   - name: Notes
     uniqueID: 3604159609
     locked: 0
-  - name: Combo
+  - name: ghostMod
+    uniqueID: 2637131513
+    locked: 0
+  - name: Stats
     uniqueID: 493361289
     locked: 0
   - name: Results

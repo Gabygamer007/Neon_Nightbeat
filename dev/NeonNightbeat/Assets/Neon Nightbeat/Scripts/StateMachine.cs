@@ -29,7 +29,10 @@ public class WaitForStart : BaseState
     }
     public override void Exit()
     {
-
+        if (gameInstance.IsGhostMode == true)
+        {
+            gameInstance.ghostPanel.SetActive(true);
+        }
     }
 }
 
@@ -145,6 +148,11 @@ public class ResultScreen : BaseState
     public override void Enter()
     {
         db = new DatabaseAccess();
+
+        if (gameInstance.IsGhostMode == true)
+        {
+            gameInstance.ghostPanel.SetActive(false);
+        }
 
 
         // Change le rank en fonction de l'accuracy
