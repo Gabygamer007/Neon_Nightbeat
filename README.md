@@ -73,7 +73,7 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
    ```sh
    yarn start
    ```
-3. Ouvrir une page sur un browser (chrome par exemple) avec
+3. Si la page web n'est pas ouvert automatiquement, ouvrir une page sur un browser (chrome par exemple) avec
    ```sh
    localhost:3000
    ```
