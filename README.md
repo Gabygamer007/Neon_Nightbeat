@@ -59,5 +59,14 @@ https://www.youtube.com/watch?v=P43DW3HUUH8&t=5535s
 ```sh
 https://www.youtube.com/watch?v=I7EDAR2GRVo&t=1030s
 ```
+La documentation de Unity qui a aidée pour plusieurs implémentations, comme les PlayerPrefs ou le pattern Observer.
+```sh
+https://docs.unity3d.com/ScriptReference/PlayerPrefs.html
+https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern
+```
+Ce repo github qui nous a fournis les dll pour pouvoir ajouter nos Plugins pour la base de données.
+```sh
+https://github.com/Julian23517/Unity-mongo-csharp-driver-dlls
+```sh
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
  
