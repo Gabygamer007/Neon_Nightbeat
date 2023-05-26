@@ -1,8 +1,15 @@
+/* 
+ - Nom du fichier : scores
+ - Contexte : requêtes pour les scores
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 import express from 'express';
 import { ScoreModel } from '../models/Scores.js';
 import { UserModel } from '../models/Users.js';
 
 const router = express.Router();
+
 
 router.get("/scores_leaderboard", async (req, res) => {
     try {

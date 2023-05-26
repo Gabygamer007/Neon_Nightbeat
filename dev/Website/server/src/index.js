@@ -1,7 +1,12 @@
+/* 
+ - Nom du fichier : index
+ - Contexte : ficher principal de l'application
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 import express from "express";
 import cors from 'cors';
 import mongoose from 'mongoose';
-
 import {UserRouter} from './routes/users.js';
 import {ScoreRouter} from './routes/scores.js';
 

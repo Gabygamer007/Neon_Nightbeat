@@ -1,9 +1,16 @@
+/* 
+ - Nom du fichier : users
+ - Contexte : requêtes pour les users
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/Users.js';
 
 const router = express.Router();
+
 
 router.post("/register_post", async (req, res) => {
     const {username, password} = req.body;

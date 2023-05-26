@@ -1,3 +1,9 @@
+/* 
+ - Nom du fichier : Scores
+ - Contexte : Modèle des scores pour la base de données
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 import mongoose from "mongoose";
 
 const ScoreSchema = new mongoose.Schema({

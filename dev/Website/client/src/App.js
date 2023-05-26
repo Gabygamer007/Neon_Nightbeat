@@ -1,3 +1,9 @@
+/* 
+ - Nom du fichier : App
+ - Contexte : fichier principal pour le front-end
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 import './css/app.css';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { Home } from "./pages/home";
