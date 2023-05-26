@@ -21,10 +21,11 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 
 ### Pour notre site web
 
-1. Installer VSCode
+1. Installer VSCode (Seulement pour ouvrir le projet et lire le code)
    ```sh
    https://code.visualstudio.com/download
    ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
     
 # Comment utiliser notre projet
 
@@ -34,7 +35,7 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 
 1. Avoir Windows en français
 
-2. Seulement ouvrir l'exécutable de notre jeu (.exe)
+2. Ouvrir l'exécutable de notre jeu (.exe)
 
 ### Pour notre site web
 
@@ -42,8 +43,8 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
    ```sh
    https://neon-nightbeat.cmd0app.com
    ```
-
 2. Soit se créer un compte avec Register ou se connecter avec Login
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
    
    
 ## Référence
@@ -59,5 +60,5 @@ https://www.youtube.com/watch?v=P43DW3HUUH8&t=5535s
 ```sh
 https://www.youtube.com/watch?v=I7EDAR2GRVo&t=1030s
 ```
-   
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
  
