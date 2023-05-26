@@ -60,7 +60,6 @@ public class KeyBinding : MonoBehaviour // Script pour le système de "KeyBinding
             else
             {
                 key = defaultKeys[buttonIndex];
-                Debug.Log(string.Concat("setting key" + buttonIndex + "back to" + key));
                 buttonTexts[buttonIndex].text = key.ToString();
                 isWaitingForInput = false;
             }

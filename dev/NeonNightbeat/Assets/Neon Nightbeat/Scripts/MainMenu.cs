@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void SavePrefs()
+    public void SavePrefs() // PlayerPrefs est basé dans le registry de l'ordinateur, donc réinstaller le jeu ne change rien aux settings
     {
         PlayerPrefs.SetString("touche1", "A");
         PlayerPrefs.SetString("touche2", "S");

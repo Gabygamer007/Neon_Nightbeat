@@ -52,21 +52,6 @@ public class PlayingGame : BaseState
         {
             gameInstance.TheStateMachine.Transition(new PausedState());
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!gameInstance.speedUp)
-            {
-                gameInstance.beatScroller.beatTempo *= 10;
-                gameInstance.theMusic.pitch *= 10.0f;
-                gameInstance.speedUp = true;
-            }
-            else
-            {
-                gameInstance.beatScroller.beatTempo /= 10;
-                gameInstance.theMusic.pitch /= 10.0f;
-                gameInstance.speedUp = false;
-            }
-        }
 
         foreach (Transform note in gameInstance.Notes)
         {
