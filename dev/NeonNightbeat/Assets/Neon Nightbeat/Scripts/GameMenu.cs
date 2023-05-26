@@ -58,26 +58,35 @@ public class GameMenu : MonoBehaviour
 
     public void Music1()
     {
-        music = "Warriors";
-        tempo = 234;
-        ghostMode = false;
-        multiplier = 1;
+        if (music != "Warriors")
+        {
+            music = "Warriors";
+            tempo = 234;
+            ghostMode = false;
+            multiplier = 1;
+        }
     }
 
     public void Music2()
     {
-        music = "Silhouette";
-        tempo = 637;
-        ghostMode = false;
-        multiplier = 3;
+        if (music != "Silhouette")
+        {
+            music = "Silhouette";
+            tempo = 637;
+            ghostMode = false;
+            multiplier = 3;
+        }
     }
 
     public void Music3()
     {
-        music = "Ransom";
-        tempo = 450;
-        ghostMode = false;
-        multiplier = 2;
+        if (music != "Ransom")
+        {
+            music = "Ransom";
+            tempo = 450;
+            ghostMode = false;
+            multiplier = 2;
+        } 
     }
 
     public void GhostModeClicked()
