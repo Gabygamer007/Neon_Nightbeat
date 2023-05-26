@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const ScoreSchema = new mongoose.Schema({
     username: {type: String, required:true},
-    username: {type: String, required:true},
+    music: {type: String, required:true},
     score: {type: Number, required:true},
     accuracy: {type: Number, required:true},
     highestCombo: {type: Number, required:true},

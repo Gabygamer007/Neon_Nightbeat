@@ -17,7 +17,7 @@ export const Leaderboard = () => {
     const [scoreList, setScoreList] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/leaderboard/scores").then((response) => {
+        axios.get("http://localhost:3001/leaderboard/scores_leaderboard").then((response) => {
             const sortedScores = response.data.sort((a, b) => b.score - a.score);
             setScoreList(sortedScores);
         });
@@ -45,7 +45,7 @@ export const Leaderboard = () => {
                         <div className="rank-title">RANK</div>
                     </div>
                     <div className="leaderboard-box">
-                        <div className="username-box">
+                        <div className="leaderboard-username-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-username">{scoreLeaderboard.username}</div>
@@ -53,35 +53,35 @@ export const Leaderboard = () => {
                             })}
 
                         </div>
-                        <div className="music-box">
+                        <div className="leaderboard-music-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-music">{scoreLeaderboard.music}</div>
                                 );
                             })}
                         </div>
-                        <div className="score-box">
+                        <div className="leaderboard-score-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-score">{scoreLeaderboard.score}</div>
                                 );
                             })}
                         </div>
-                        <div className="accuracy-box">
+                        <div className="leaderboard-accuracy-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-accuracy">{scoreLeaderboard.accuracy.toFixed(2)} %</div>
                                 );
                             })}
                         </div>
-                        <div className="highest-combo-box">
+                        <div className="leaderboard-highest-combo-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-combo">{scoreLeaderboard.highestCombo}x</div>
                                 );
                             })}
                         </div>
-                        <div className="rank-box">
+                        <div className="leaderboard-rank-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-rank">{scoreLeaderboard.rank}</div>
