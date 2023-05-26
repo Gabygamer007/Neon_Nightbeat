@@ -39,4 +39,10 @@ router.post("/login_post", async (req, res) => {
     res.json({token, userID: user._id});
 });
 
+router.get("/getUser/:id", async (req, res) => {
+    const userId = req.params.id;
+    const user = await UserModel.findById(userId);
+    return res.json(user.username);
+});
+
 export {router as UserRouter};

@@ -26,7 +26,7 @@ const LoginForm = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3001/login/login_post", {username, password});
+            const response = await axios.post("http://localhost:3001/user/login_post", {username, password});
             setCookies("access_token", response.data.token);
             window.localStorage.setItem("userID", response.data.userID);
             if (response.data.userID != null) {

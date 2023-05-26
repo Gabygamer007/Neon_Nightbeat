@@ -22,7 +22,7 @@ const RegisterForm = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:3001/register/register_post", {username, password});
+            await axios.post("http://localhost:3001/user/register_post", {username, password});
             alert("Registration completed! Now Login.");
         } catch (err) {
             console.error(err)

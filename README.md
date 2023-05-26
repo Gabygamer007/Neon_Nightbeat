@@ -21,39 +21,11 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 
 ### Pour notre site web
 
-1. Installer Node.js
+1. Installer VSCode (Seulement pour ouvrir le projet et lire le code)
    ```sh
-   https://nodejs.org/en/download
+   https://code.visualstudio.com/download
    ```
-3. Cloner le répertoire
-   ```sh
-   git clone https://github.com/NITNIT2/Neon_Nightbeat.git
-   ```
-3. Ouvrir le dossier "Website" de notre projet dans VSCode => ..\Neon_Nightbeat\dev\Website
-4. Ouvrir un nouveau terminal et se diriger dans le dossier "server"
-   ```sh
-   cd server
-   ```
-5. Installer npm
-   ```sh
-   npm install
-   ```
-6. Installer yarn
-   ```sh
-   yarn install
-   ```
-7. Ouvrir un autre terminal et se diriger dans le dossier "client"
-   ```sh
-   cd client
-   ```
-8. Installer npm
-   ```sh
-   npm install
-   ```
-9. Installer yarn
-   ```sh
-   yarn install
-   ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
     
 # Comment utiliser notre projet
 
@@ -61,27 +33,31 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 
 ### Pour notre jeu Unity
 
-1. Seulement ouvrir l'exécutable de notre jeu (.exe)
+1. Avoir Windows en français
+
+2. Ouvrir l'exécutable de notre jeu (.exe)
 
 ### Pour notre site web
 
-1. Retourner sur le terminal dirigé vers "server"
+1. Aller sur
    ```sh
-   yarn start
+   https://neon-nightbeat.cmd0app.com
    ```
-2. Retourner sur le terminal dirigé vers "client"
-   ```sh
-   yarn start
-   ```
-3. Si la page web n'est pas ouvert automatiquement, ouvrir une page sur un browser (chrome par exemple) avec
-   ```sh
-   localhost:3000
-   ```
-4. Soit se créer un compte avec Register ou se connecter avec Login
-   
+2. Soit se créer un compte avec Register ou se connecter avec Login
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
    
 ## Référence
 
-???
-   
+ChatGPT
+```sh
+https://openai.com/blog/chatgpt
+```
+Vidéos sur MERN (MongoDB, Express, React, Node)
+```sh
+https://www.youtube.com/watch?v=P43DW3HUUH8&t=5535s
+```
+```sh
+https://www.youtube.com/watch?v=I7EDAR2GRVo&t=1030s
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
  
