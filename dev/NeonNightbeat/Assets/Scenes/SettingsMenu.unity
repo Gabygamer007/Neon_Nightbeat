@@ -678,7 +678,6 @@ GameObject:
   - component: {fileID: 548637691}
   - component: {fileID: 548637690}
   - component: {fileID: 548637689}
-  - component: {fileID: 548637692}
   m_Layer: 5
   m_Name: Touche4
   m_TagString: Untagged
@@ -801,18 +800,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548637687}
   m_CullTransparentMesh: 1
---- !u!114 &548637692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548637687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184d26362e9eec044b862ea9d43e18b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &567221825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1082,6 @@ GameObject:
   - component: {fileID: 613885322}
   - component: {fileID: 613885321}
   - component: {fileID: 613885320}
-  - component: {fileID: 613885323}
   m_Layer: 5
   m_Name: Touche3
   m_TagString: Untagged
@@ -1218,18 +1204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613885318}
   m_CullTransparentMesh: 1
---- !u!114 &613885323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613885318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184d26362e9eec044b862ea9d43e18b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &664054857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,7 +2076,6 @@ GameObject:
   - component: {fileID: 916982326}
   - component: {fileID: 916982325}
   - component: {fileID: 916982324}
-  - component: {fileID: 916982327}
   m_Layer: 5
   m_Name: Touche1
   m_TagString: Untagged
@@ -2225,18 +2198,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916982322}
   m_CullTransparentMesh: 1
---- !u!114 &916982327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916982322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184d26362e9eec044b862ea9d43e18b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &935059310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +2859,6 @@ GameObject:
   - component: {fileID: 1218252386}
   - component: {fileID: 1218252385}
   - component: {fileID: 1218252384}
-  - component: {fileID: 1218252387}
   m_Layer: 5
   m_Name: Touche2
   m_TagString: Untagged
@@ -3021,18 +2981,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218252382}
   m_CullTransparentMesh: 1
---- !u!114 &1218252387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218252382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184d26362e9eec044b862ea9d43e18b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1221397916
 GameObject:
   m_ObjectHideFlags: 0

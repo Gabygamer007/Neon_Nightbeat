@@ -564,8 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d22117a6d89b9741baedeae256401f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textUsername: {fileID: 1055421172}
-  textPassword: {fileID: 1539917328}
+  inputUsername: {fileID: 1055421172}
+  inputPassword: {fileID: 1539917328}
   textInvalidUser: {fileID: 1587436506}
 --- !u!1 &1037984724
 GameObject:

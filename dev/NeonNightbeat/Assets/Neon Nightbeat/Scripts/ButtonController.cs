@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour
+public class ButtonController : MonoBehaviour // Un script qui ne fait que changer la couleur des boutons quand on appuie sur les touches compatibles
 {
     private SpriteRenderer spriteRenderer;
 

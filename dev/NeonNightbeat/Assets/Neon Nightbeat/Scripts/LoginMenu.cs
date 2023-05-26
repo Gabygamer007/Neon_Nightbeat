@@ -1,16 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LoginMenu : MonoBehaviour
 {
     private DatabaseAccess db;
-    public TMP_InputField textUsername;
-    public TMP_InputField textPassword;
+    public TMP_InputField inputUsername;
+    public TMP_InputField inputPassword;
     public TMP_Text textInvalidUser;
 
     void Start()
@@ -18,16 +15,10 @@ public class LoginMenu : MonoBehaviour
         db = new DatabaseAccess();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PressedLogin()
     {
-        string username = textUsername.text;
-        string password = textPassword.text;
+        string username = inputUsername.text;
+        string password = inputPassword.text;
         if (db.CheckUserCredentials(username, password))
         {
             PlayerPrefs.SetString("username", username);

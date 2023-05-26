@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
-public class KeyBinding : MonoBehaviour
+public class KeyBinding : MonoBehaviour // Script pour le système de "KeyBinding" dans le menu de paramètres
 {
     private KeyCode[] defaultKeys = new KeyCode[4];
     private TMP_Text[] buttonTexts;
@@ -44,7 +41,7 @@ public class KeyBinding : MonoBehaviour
     {
         if (isWaitingForInput)
         {
-            if (!Input.GetKeyDown(KeyCode.Escape))
+            if (!Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.Mouse0))
             {
                 for (int i = (int)KeyCode.A; i <= (int)KeyCode.Z; i++)
                 {
@@ -55,6 +52,7 @@ public class KeyBinding : MonoBehaviour
                         buttonTexts[buttonIndex].text = key.ToString();
                         string touche = string.Concat("touche" + (buttonIndex + 1));
                         PlayerPrefs.SetString(touche, key.ToString());
+                        defaultKeys[buttonIndex] = key;
                         break;
                     }
                 }
@@ -62,7 +60,8 @@ public class KeyBinding : MonoBehaviour
             else
             {
                 key = defaultKeys[buttonIndex];
-                buttonTexts[buttonIndex].text = defaultKeys[buttonIndex].ToString();
+                Debug.Log(string.Concat("setting key" + buttonIndex + "back to" + key));
+                buttonTexts[buttonIndex].text = key.ToString();
                 isWaitingForInput = false;
             }
         }

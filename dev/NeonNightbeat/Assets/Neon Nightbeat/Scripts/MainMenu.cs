@@ -9,10 +9,10 @@ public class MainMenu : MonoBehaviour
     public Button logOutButton;
     void Start()
     {
-        if (!PlayerPrefs.HasKey("touche1")) { // si il n'a pas le playerprefs touche1, c'est qu'il n'a normalement aucun playerpref
+        if (!PlayerPrefs.HasKey("touche1")) { // Si il n'a pas le playerprefs touche1, c'est qu'il n'a normalement aucun playerprefs
             SavePrefs();
         }
-        if (PlayerPrefs.HasKey("username")){
+        if (PlayerPrefs.HasKey("username")){ // S'il n'est pas connecté
             logOutButton.gameObject.SetActive(true);
         }
     }

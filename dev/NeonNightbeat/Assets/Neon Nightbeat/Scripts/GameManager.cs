@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -63,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private StateMachine theStateMachine;
 
-    void Start() // tout initialiser quand on arrive dans la scene "PlayingGame"
+    void Start() // Tout initialiser quand on arrive dans la scene "PlayingGame"
     {
         instance = this;
 
@@ -128,7 +125,7 @@ public class GameManager : MonoBehaviour
         notes = new List<Transform>(beatScroller.GetComponentsInChildren<Transform>());
         notes.Remove(beatScroller.transform);
 
-        foreach (Transform note in notes)// donner un observer sur chaque objet note et initialiser les variables dans l'observer
+        foreach (Transform note in notes) // Donner un observer sur chaque objet note et initialiser les variables de l'observer
         {
             Observer observer = note.gameObject.AddComponent<Observer>();
             observer.subjectToObserve = note.GetComponent<ObjectNote>();
@@ -144,10 +141,9 @@ public class GameManager : MonoBehaviour
         theStateMachine.Init(new WaitForStart());
     }
 
-    // Update is called once per frame
     void Update()
     {   
-        theStateMachine.Update(); // changer les etats dans la machine d'etats
+        theStateMachine.Update(); // Changer les etats dans la machine d'etats
     }
 
     public void NoteHit()

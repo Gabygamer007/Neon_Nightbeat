@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Observer : MonoBehaviour // Observer pattern based on : https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern

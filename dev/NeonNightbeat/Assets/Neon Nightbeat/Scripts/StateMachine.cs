@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class BaseState
+public abstract class BaseState // State pattern qui gère les états d'une partie
 {
     public abstract void Enter();
     public abstract void Update();

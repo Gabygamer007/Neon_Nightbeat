@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BeatScroller : MonoBehaviour
+public class BeatScroller : MonoBehaviour // Le script qui va être attaché à un objet qui contient toutes les notes et qui les faire tomber
 {
-
     public float beatTempo;
-
     public bool hasStarted;
 
     void Start()
@@ -17,15 +13,7 @@ public class BeatScroller : MonoBehaviour
     void Update()
     {
         
-        if (!hasStarted)
-        {
-            /*if (Input.anyKeyDown)
-            {
-                hasStarted = true;
-                Destroy(GameObject.Find("TextStart"));
-            }*/
-        }
-        else
+        if (hasStarted)
         {
             transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
         }
