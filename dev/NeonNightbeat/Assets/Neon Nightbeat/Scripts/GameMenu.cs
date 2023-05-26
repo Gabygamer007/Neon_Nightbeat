@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameMenu : MonoBehaviour
 {
-    public string music = "";
+    public string music;
     public int tempo = 0;
     public static GameMenu instance;
     public int multiplier;
@@ -15,6 +15,8 @@ public class GameMenu : MonoBehaviour
 
     [SerializeField]
     private TMP_Text multiplierText;
+    [SerializeField]
+    private TMP_Text chosenMusicText;
     [SerializeField]
     private Button ghostModeButton;
 
@@ -35,6 +37,10 @@ public class GameMenu : MonoBehaviour
         }
 
         multiplierText.text = multiplier + " x";
+        if (music != "0")
+        {
+            chosenMusicText.text = music;
+        }
     }
 
     public void GoBack()
