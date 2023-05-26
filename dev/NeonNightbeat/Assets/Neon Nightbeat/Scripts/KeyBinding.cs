@@ -1,6 +1,12 @@
 using UnityEngine;
 using TMPro;
 
+/* 
+ - Nom du fichier : KeyBinding
+ - Contexte : Pour choisir nos touches dans le menu "settings"
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class KeyBinding : MonoBehaviour // Script pour le système de "KeyBinding" dans le menu de paramètres
 {
     private KeyCode[] defaultKeys = new KeyCode[4];

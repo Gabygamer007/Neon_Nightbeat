@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/* 
+ - Nom du fichier : Observer
+ - Contexte : On crée un effet de particule lorsqu'on clique sur une note
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class Observer : MonoBehaviour // Observer pattern based on : https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern
 {
     public ObjectNote subjectToObserve;

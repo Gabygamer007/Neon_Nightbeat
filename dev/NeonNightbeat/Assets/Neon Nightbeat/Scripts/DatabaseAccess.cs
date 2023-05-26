@@ -1,6 +1,13 @@
 using MongoDB.Driver;
 using MongoDB.Bson;
 using BCryptNet = BCrypt.Net;
+
+/* 
+ - Nom du fichier : DatabaseAccess
+ - Contexte : Accès à la base de données et vérification des "credentials"
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class DatabaseAccess
 {
     private string connectionString = "mongodb+srv://matisgaetjens:3lie2oo9@neonnightbeatdb.ya38q6y.mongodb.net/NeonNightbeatDB?retryWrites=true&w=majority";

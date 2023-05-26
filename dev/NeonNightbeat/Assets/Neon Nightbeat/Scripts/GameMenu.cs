@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+/* 
+ - Nom du fichier : GameMenu
+ - Contexte : Menu de choix de musique et modificateur
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
 public class GameMenu : MonoBehaviour
 {
     public string music;

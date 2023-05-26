@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/* 
+ - Nom du fichier : MusicNoteFactory
+ - Contexte : Factory pattern pour la création de chaque note
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class MusicNoteFactory
 {
     public void CreateMusicNote(GameObject notePrefab, Vector3 position, Color color, KeyCode keyToPress)

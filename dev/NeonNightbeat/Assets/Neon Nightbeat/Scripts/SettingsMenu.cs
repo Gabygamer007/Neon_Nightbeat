@@ -4,6 +4,12 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/* 
+ - Nom du fichier : SettingsMenu
+ - Contexte : Menu pour les "settings"
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class SettingsMenu : MonoBehaviour
 {
     public TMP_Text valeurVolume;

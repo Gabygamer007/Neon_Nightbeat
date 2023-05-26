@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/* 
+ - Nom du fichier : BeatScroller
+ - Contexte : Défilement des notes
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class BeatScroller : MonoBehaviour // Le script qui va être attaché à un objet qui contient toutes les notes et qui les faire tomber
 {
     public float beatTempo;

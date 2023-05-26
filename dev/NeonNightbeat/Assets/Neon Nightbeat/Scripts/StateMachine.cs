@@ -2,6 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* 
+ - Nom du fichier : StateMachine
+ - Contexte : State pattern pour tous les états de notre jeu
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public abstract class BaseState // State pattern qui gère les états d'une partie
 {
     public abstract void Enter();

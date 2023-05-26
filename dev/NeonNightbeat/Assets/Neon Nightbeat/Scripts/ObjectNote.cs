@@ -1,6 +1,12 @@
 using UnityEngine;
 using System;
 
+/* 
+ - Nom du fichier : ObjectNote
+ - Contexte : Vérification lorsqu'on clique sur un note pour sa précision
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class ObjectNote : MonoBehaviour
 {
     public event Action NoteMissed;

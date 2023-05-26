@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/* 
+ - Nom du fichier : ButtonController
+ - Contexte : Change la couleur des récepteurs lorsqu'on clique dessus avec la touche prédéfini
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class ButtonController : MonoBehaviour // Un script qui ne fait que changer la couleur des boutons quand on appuie sur les touches compatibles
 {
     private SpriteRenderer spriteRenderer;

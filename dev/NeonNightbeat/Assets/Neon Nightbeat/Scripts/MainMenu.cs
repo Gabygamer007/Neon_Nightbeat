@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/* 
+ - Nom du fichier : MainMenu
+ - Contexte : Menu principal avec les boutons pour les différents menu
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class MainMenu : MonoBehaviour
 {
     public Button logOutButton;

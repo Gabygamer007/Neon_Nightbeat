@@ -5,6 +5,12 @@ using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
+/* 
+ - Nom du fichier : GameManager
+ - Contexte : Les fonctionnalités général du jeu
+ - Auteurs : Matis Gaetjens et Gabriel Tremblay 
+*/
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
