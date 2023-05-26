@@ -32,13 +32,17 @@ export const Leaderboard = () => {
                     <button className="btn logout" onClick={logout}>SIGN OUT</button>
                 </div>
                 
-            </>  
+            </>
             <div className="leaderboard">
                 <h2 className="leaderboard-main-title">LEADERBOARD</h2>
                 <div className="main-leaderboard-box">
                     <div className="leaderboard-titles">
                         <div className="username-title">USERNAME</div>
+                        <div className="music-title">MUSIC</div>
                         <div className="score-title">SCORE</div>
+                        <div className="accuracy-title">ACCURACY</div>
+                        <div className="combo-title">COMBO</div>
+                        <div className="rank-title">RANK</div>
                     </div>
                     <div className="leaderboard-box">
                         <div className="username-box">
@@ -49,10 +53,38 @@ export const Leaderboard = () => {
                             })}
 
                         </div>
+                        <div className="music-box">
+                            {scoreList.map((scoreLeaderboard) => {
+                                return (
+                                    <div className="leaderboard-music">{scoreLeaderboard.music}</div>
+                                );
+                            })}
+                        </div>
                         <div className="score-box">
                             {scoreList.map((scoreLeaderboard) => {
                                 return (
                                     <div className="leaderboard-score">{scoreLeaderboard.score}</div>
+                                );
+                            })}
+                        </div>
+                        <div className="accuracy-box">
+                            {scoreList.map((scoreLeaderboard) => {
+                                return (
+                                    <div className="leaderboard-accuracy">{scoreLeaderboard.accuracy.toFixed(2)} %</div>
+                                );
+                            })}
+                        </div>
+                        <div className="highest-combo-box">
+                            {scoreList.map((scoreLeaderboard) => {
+                                return (
+                                    <div className="leaderboard-combo">{scoreLeaderboard.highestCombo}x</div>
+                                );
+                            })}
+                        </div>
+                        <div className="rank-box">
+                            {scoreList.map((scoreLeaderboard) => {
+                                return (
+                                    <div className="leaderboard-rank">{scoreLeaderboard.rank}</div>
                                 );
                             })}
                         </div>

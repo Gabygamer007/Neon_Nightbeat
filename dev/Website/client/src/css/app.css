@@ -248,7 +248,7 @@ input:valid ~ label {
 .btn.logout {
     position: absolute;
     margin-top: 0px;
-    margin-left: 1650px;
+    margin-left: 85%;
     color: red;
     border: 2px solid red;
     padding: 10px 20px;
@@ -287,10 +287,11 @@ input:valid ~ label {
     flex-direction: column;
     align-items: center;
     border: 2px solid white;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 25px;
-    width: 400px;
+    width: 1020px;
     height: 500px;
+    overflow: auto;
 }
 
 .leaderboard-titles {
@@ -305,18 +306,51 @@ input:valid ~ label {
 }
 
 .username-title {
-    width: 50%;
+    width: 170px;
     text-align: center;
-    color: aquamarine;
+    color: rgb(0, 217, 255);
     padding: 10px 0px;
-    border-right: 1px solid white;
+    border-right: 2px solid white;
+}
+
+.music-title {
+    width: 170px;
+    text-align: center;
+    color: rgb(255, 0, 234);
+    padding: 10px 0px;
+    border-right: 2px solid white;
 }
 
 .score-title {
-    width: 50%;
+    width: 170px;
     text-align: center;
     color: coral;
     padding: 10px 0px;
+    border-right: 2px solid white;
+}
+
+.accuracy-title {
+    width: 170px;
+    text-align: center;
+    color:rgb(170, 0, 255);
+    padding: 10px 0px;
+    border-right: 2px solid white;
+}
+
+.combo-title {
+    width: 170px;
+    text-align: center;
+    color:rgb(187, 255, 0);
+    padding: 10px 0px;
+    border-right: 2px solid white;
+}
+
+.rank-title {
+    width: 170px;
+    text-align: center;
+    color:rgb(0, 255, 98);
+    padding: 10px 0px;
+    border-right: 2px solid white;
 }
 
 .leaderboard-box {
@@ -330,27 +364,105 @@ input:valid ~ label {
 
 .leaderboard-username {
     padding: 5px 0px;
-    color: white;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
+    color: rgb(106, 233, 255);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.leaderboard-music {
+    padding: 5px 0px;
+    color: rgb(255, 130, 245);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
 }
 
 .leaderboard-score {
     padding: 5px 0px;
-    color: white;
-    border-bottom: 1px solid white;
+    color: rgb(255, 168, 137);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.leaderboard-accuracy {
+    padding: 5px 0px;
+    color: rgb(201, 97, 253);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.leaderboard-combo {
+    padding: 5px 0px;
+    color: rgb(228, 255, 155);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+
+.leaderboard-rank {
+    padding: 5px 0px;
+    color: rgb(146, 255, 200);
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
 }
 
 .username-box {
     text-align: center;
-    width: 50%;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+}
+
+.music-box {
+    text-align: center;
+    width: 170px;
     display: flex;
     flex-direction: column;
 }
 
 .score-box {
     text-align: center;
-    width: 50%;
+    width: 170px;
     display: flex;
     flex-direction: column;
+}
+
+.accuracy-box {
+    text-align: center;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+}
+
+.highest-combo-box {
+    text-align: center;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-box {
+    text-align: center;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background:darkcyan;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:rgba(0, 250, 154, 0.8);
 }
