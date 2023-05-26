@@ -46,10 +46,9 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 2. Soit se créer un compte avec Register ou se connecter avec Login
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
    
-   
 ## Référence
 
-Chat GPT
+ChatGPT
 ```sh
 https://openai.com/blog/chatgpt
 ```
