@@ -9,26 +9,6 @@ Jeu de rythme fait avec Unity et un site web fait avec React pour se créer un c
 
 ## Vidéo de présentation 
 https://www.youtube.com/watch?v=HhnuKj9kBDY
-
-# Comment faire l'installation de notre projet
-
-## Installation
-
-### Pour notre jeu Unity
-
-1. Installer Unity Hub
-   ```sh
-   https://unity.com/download
-   ```
-2. Installer la version 2021.2.19f1 de Unity
-
-### Pour notre site web
-
-1. Installer VSCode (Seulement pour ouvrir le projet et lire le code)
-   ```sh
-   https://code.visualstudio.com/download
-   ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
     
 # Comment utiliser notre projet
 
